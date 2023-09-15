@@ -5,14 +5,26 @@ const authResc = () => import(/* webpackChunkName: 'authResc' */'../views/auth/r
 const authFunc = () => import(/* webpackChunkName: 'authFunc' */'../views/auth/func/index');
 
 
+const eduCourse = () => import(/* webpackChunkName: 'eduCourse' */'../views/edu/course/index');
+const eduChapter = () => import(/* webpackChunkName: 'eduChapter' */'../views/edu/chapter/index');
+const eduLesson = () => import(/* webpackChunkName: 'eduLesson' */'../views/edu/lesson/index');
+const eduCatalog = () => import(/* webpackChunkName: 'eduCatalog' */'../views/edu/catalog/index');
+
+
 const routes = [
 
+    // 后台权限系统
     {path: '/auth/user', name: 'AuthUser', component: authUser},
     {path: '/auth/role', name: 'AuthRole', component: authRole},
     { path: '/auth/role/authorized' ,name: 'AuthRoleAuthorized', component: authRoleAuthorized},
     {path: '/auth/resc', name: 'AuthResc', component: authResc},
     {path: '/auth/func', name: 'AuthFunc', component: authFunc},
 
+    // 后台课程系统
+    {path: '/edu/course', name: 'EduCourse', component: eduCourse},
+    {path: '/edu/chapter', name: 'EduChapter', component: eduChapter},
+    {path: '/edu/lesson', name: 'EduLesson', component: eduLesson},
+    {path: '/edu/catalog', name: 'EduCatalog', component: eduCatalog},
 ]
 
 export default routes
