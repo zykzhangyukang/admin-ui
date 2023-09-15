@@ -1,0 +1,42 @@
+{
+  "name": "vue-admin-template",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "build:test": "vue-cli-service build --mode test",
+    "deploy:test": "npm run build:test && dotenv -e .env.test node ./deploy",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@ant-design-vue/use": "^0.0.1-alpha.4",
+    "ant-design-vue": "^2.0.0-beta.6",
+    "axios": "^0.19.2",
+    "core-js": "^3.6.5",
+    "moment": "^2.27.0",
+    "screenfull": "^5.0.2",
+    "vue": "^3.0.0-0",
+    "vue-router": "^4.0.0-0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0-0",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-import": "^1.13.0",
+    "chalk": "^4.1.0",
+    "compressing": "^1.5.1",
+    "del": "^5.1.0",
+    "dotenv-cli": "^4.0.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^7.0.0-0",
+    "less": "^3.0.4",
+    "less-loader": "6.0.0",
+    "ora": "^5.3.0",
+    "scp2": "^0.5.0"
+  }
+}
