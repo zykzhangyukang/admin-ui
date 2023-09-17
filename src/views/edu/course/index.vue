@@ -39,7 +39,7 @@
                                 </a-menu-item>
                             </a-menu>
                         </template>
-                        <a-button>
+                        <a-button :loading="btnLoading">
                             更新状态
                             <DownOutlined />
                         </a-button>
@@ -103,6 +103,7 @@
         data() {
             return {
                 toolbarFixed: true,
+                btnLoading: false,
                 selectedRowKeysArray: [],
                 selectedRows: [],
                 searchParams: {
@@ -180,11 +181,14 @@
                 }
                 const id = this.selectedRowKeysArray[0];
                 const params = {courseId: id, status: status};
+                this.btnLoading = true;
                 eduCourseUpdateStatus(params).then(res=>{
                     this.$message.success("更新状态成功！");
                     this.selectedRowKeysArray = [];
                     this.selectedRows = [];
                     this.queryData();
+                }).finally(()=>{
+                    this.btnLoading = false;
                 })
             },
             pageSearchChange() {
