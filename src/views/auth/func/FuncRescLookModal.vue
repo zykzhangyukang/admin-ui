@@ -9,6 +9,7 @@
              okText="确定"
              ref="form"
     >
+      <a-spin :spinning="spinning" size="small">
       <div  v-if="rescVOList && rescVOList.length > 0">
         <a-divider >资源列表</a-divider>
         <div class="resc_item" v-for="item in rescVOList" :key="item.rescId">{{   '请求方式：'+methodTypeGName[item.methodType] + " ，资源URL：" + item.rescUrl  }} <span style="float: right">({{item.rescName}})</span></div>
@@ -24,6 +25,7 @@
           </a-tooltip>
         </a-tag>
       </div>
+      </a-spin>
     </a-modal>
 </template>
 <script>
@@ -38,6 +40,7 @@
                 confirmLoading: false,
                 visible: false,
                 searchLoading: true,
+                spinning: false,
                 searchValues: [],
                 searchList: [],
                 rescVOList: [],
@@ -88,13 +91,16 @@
                 this.confirmLoading = false;
                 this.form = this.$options.data().form;
             },
-            open(funcId) {
-                authFuncSelectById(funcId).then(res=>{
-                    this.rescVOList = res.result.rescVOList;
-                    this.userVOList = res.result.userVOList;
-                    this.visible = true;
-                })
-            }
+          open(funcId) {
+            this.visible = true;
+            this.spinning = true;
+            authFuncSelectById(funcId).then(res => {
+              this.rescVOList = res.result.rescVOList;
+              this.userVOList = res.result.userVOList;
+            }).finally(()=>{
+              this.spinning = false;
+            })
+          }
         }
     }
 </script>

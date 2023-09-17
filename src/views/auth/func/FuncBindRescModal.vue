@@ -10,26 +10,27 @@
              okText="提交"
              ref="form"
     >
-
-        <!-- 搜索部分 -->
-        <a-select
-                allowClear
-                class="mb15"
-                v-model:value="form.rescVOList"
-                mode="multiple"
-                :autoClearSearchValue="true"
-                label-in-value
-                style="width: 100%"
-                placeholder="搜索绑定资源"
-                :filter-option="false"
-                :not-found-content="searchLoading ? undefined : '暂无数据'"
-                :options="options"
-                @search="handleSearchResc"
-        >
-            <template v-if="searchLoading" #notFoundContent>
-                <a-spin size="small" />
-            </template>
-        </a-select>
+        <a-spin :spinning="spinning" size="small">
+            <!-- 搜索部分 -->
+            <a-select
+                    allowClear
+                    class="mb15"
+                    v-model:value="form.rescVOList"
+                    mode="multiple"
+                    :autoClearSearchValue="true"
+                    label-in-value
+                    style="width: 100%"
+                    placeholder="搜索绑定资源"
+                    :filter-option="false"
+                    :not-found-content="searchLoading ? undefined : '暂无数据'"
+                    :options="options"
+                    @search="handleSearchResc"
+            >
+                <template v-if="searchLoading" #notFoundContent>
+                    <a-spin size="small"/>
+                </template>
+            </a-select>
+        </a-spin>
 
     </a-modal>
 </template>
@@ -43,6 +44,7 @@ export default {
             return {
                 confirmLoading: false,
                 visible: false,
+                spinning: false,
                 searchLoading: false,
                 form: {
                     funcId: null,
@@ -96,6 +98,8 @@ export default {
                 this.searchValues = [];
             },
             open(funcId) {
+                this.spinning = true;
+                this.visible = true;
                 authFuncSelectById(funcId).then(res=>{
                     let list  = res.result.rescVOList;
                     let arr = [];
@@ -109,8 +113,9 @@ export default {
                     }
                     this.options = arr;
                     this.form.rescVOList = arr;
-                    this.visible = true;
                     this.form.funcId  = funcId;
+                }).finally(()=>{
+                    this.spinning = false;
                 })
             }
         }

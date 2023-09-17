@@ -2,7 +2,7 @@
     <a-layout class='course-container'>
         <a-card>
             <div :style="{'textAlign':'right'}">
-                <a-button type="primary" @click="handleAdd" v-permission="'edu:course:create'"><PlusOutlined />创建课程</a-button>
+                <a-button type="primary" @click="handleAdd" v-permission="'edu:course:add'"><PlusOutlined />创建课程</a-button>
             </div>
             <a-form
                     :style="{'marginBottom':'10px'}"
