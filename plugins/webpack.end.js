@@ -21,18 +21,6 @@ let zip = async (dir,projectName) => {
   });
 }
 
-let tgz = async (dir,projectName) => {
-  let name = `${projectName}正式站包 ${moment().format('YYYY-MM-DD HH_mm_ss')}.tar.gz`;
-  moment();
-  compressing.tgz.compressDir(dir, name)
-      .then(()=>{
-        console.log('打包成功！！！');
-        delDist(dir);
-      }).catch((e)=>{
-    console.log(e,'打包错误！！！')
-  });
-}
-
 let globalDir,globalProjectName;
 function EndWebpackPlugin(dir,projectName) {
   globalDir = dir;
@@ -42,7 +30,7 @@ EndWebpackPlugin.prototype.apply = function(compiler) {
   compiler.plugin('done', function() {
     setTimeout(() => {
       console.log('webpack编译完成！！！');
-      tgz(globalDir,globalProjectName);
+      zip(globalDir,globalProjectName);
     }, 300);
   });
 };

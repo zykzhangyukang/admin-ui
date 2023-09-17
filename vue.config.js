@@ -15,7 +15,7 @@ module.exports = {
   },
   configureWebpack: config => {
     if (process.env.ENV === 'production') {
-      config.plugins.push(new EndWebpackPlugin('dist','企业在线课堂'))
+      config.plugins.push(new EndWebpackPlugin('dist','bizedu-ui'))
     }
   },
   chainWebpack: (config) => {
