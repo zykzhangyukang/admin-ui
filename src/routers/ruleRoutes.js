@@ -6,6 +6,7 @@ const authFunc = () => import(/* webpackChunkName: 'authFunc' */'../views/auth/f
 
 
 const eduCourse = () => import(/* webpackChunkName: 'eduCourse' */'../views/edu/course/index');
+const educCreateCourse = () => import(/* webpackChunkName: 'educCreateCourse' */'../views/edu/course/CourseCreate');
 const eduChapter = () => import(/* webpackChunkName: 'eduChapter' */'../views/edu/chapter/index');
 const eduLesson = () => import(/* webpackChunkName: 'eduLesson' */'../views/edu/lesson/index');
 const eduCatalog = () => import(/* webpackChunkName: 'eduCatalog' */'../views/edu/catalog/index');
@@ -22,6 +23,7 @@ const routes = [
 
     // 后台课程系统
     {path: '/edu/course', name: 'EduCourse', component: eduCourse},
+    {path: '/edu/course/create', name: 'EduCreateCourse', component: educCreateCourse},
     {path: '/edu/chapter', name: 'EduChapter', component: eduChapter},
     {path: '/edu/lesson', name: 'EduLesson', component: eduLesson},
     {path: '/edu/catalog', name: 'EduCatalog', component: eduCatalog},
