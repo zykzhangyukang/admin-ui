@@ -15,7 +15,7 @@ module.exports = {
   },
   configureWebpack: config => {
     if (process.env.ENV === 'production') {
-      config.plugins.push(new EndWebpackPlugin('dist','项目名称'))
+      config.plugins.push(new EndWebpackPlugin('dist','企业在线课堂'))
     }
   },
   chainWebpack: (config) => {

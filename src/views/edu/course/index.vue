@@ -2,7 +2,7 @@
     <a-layout class='course-container'>
         <a-card>
             <div :style="{'textAlign':'right'}">
-                <a-button type="primary" @click="handleAdd" v-permission="'auth:role:add'">创建课程</a-button>
+                <a-button type="primary" @click="handleAdd" v-permission="'edu:course:page'">创建课程</a-button>
             </div>
             <a-form
                     :style="{'marginBottom':'10px'}"
@@ -10,6 +10,11 @@
             >
                 <a-form-item label="课程名称" name='courseName'>
                     <a-input v-model:value="searchParams.courseName" :style="{width:'180px'}" placeholder="课程名称输入框"  autocomplete="off" ></a-input>
+                </a-form-item>
+                <a-form-item label="用户状态">
+                    <a-select v-model:value="searchParams.status" :style="{width:'180px'}" placeholder="课程状态">
+                        <a-select-option v-for="item in courseStatusG" :value="item.code" :key="item.code">{{courseStatusGName[item.code]}}</a-select-option>
+                    </a-select>
                 </a-form-item>
                 <a-form-item>
                     <a-button type="primary" @click="pageSearchChange" v-permission="'auth:role:page'">搜索</a-button>
@@ -27,6 +32,11 @@
                     :columns='tableColumns'
                     :data-source='tableData'
             >
+                <template #status="{ text }">
+                    <a-tag :color="text==='enable' ? 'green' : 'red'">
+                        {{ courseStatusGName[text] }}
+                    </a-tag>
+                </template>
             </HTable>
             <HPage
                     :current="searchParams.currentPage"
@@ -43,6 +53,7 @@
     import HPage from "@/components/pagination/HPage";
     import HTable from "@/components/table/HTable";
     import {eduCoursePage} from "@/api/edu";
+    import {bizeduDomain, formatConst, getConst} from "@/utils/constant";
 
     export default {
         name: "course.vue",
@@ -56,7 +67,8 @@
                 searchParams: {
                     currentPage: 1,
                     pageSize: 20,
-                    courseName: ''
+                    courseName: '',
+                    status: ''
                 },
                 total: 0,
                 tableData: [],
@@ -84,6 +96,12 @@
                         key: 'createTime',
                     },
                     {
+                        title: '课程状态',
+                        dataIndex: 'status',
+                        key: 'status',
+                        slots: { customRender: 'status' },
+                    },
+                    {
                         title: '更新时间',
                         dataIndex: 'updateTime',
                         key: 'updateTime',
@@ -92,26 +110,24 @@
                         title: '创建人',
                         dataIndex: 'creatorName',
                         key: 'creatorName',
-                    },
-                    {
-                        title: '操作',
-                        key: 'action',
-                        align: 'center',
-                        width: '200px',
-                        slots: { customRender: 'action' },
-                    },
+                    }
                 ],
             }
         },
         computed:{
-
+            courseStatusG(){
+                return getConst("course_status_group", bizeduDomain)
+            },
+            courseStatusGName(){
+                return formatConst(this.courseStatusG);
+            }
         },
         methods:{
             handleUpdate(id){
                 this.$refs['roleUpdateModal'].open(id);
             },
             handleAdd(){
-                this.$refs['roleSaveModal'].open();
+                this.$router.push('/edu/course/create');
             },
             pageSearchChange() {
                 this.searchParams.currentPage = 1
@@ -149,6 +165,7 @@
             },
         },
         created() {
+            this.queryData();
         }
     }
 </script>

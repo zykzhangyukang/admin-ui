@@ -61,21 +61,21 @@
                                 {{ funcTypeGName[text] }}
                             </template>
                             <template #funcKey="{ text }">
-                                <a class="btn-text-small color303030">{{text}}</a>
+                               [{{text}}]
                             </template>
                             <template #rescVOList="{ record }">
                                    <span>
-                                         <a v-if="record.rescVOList !==null && record.rescVOList.length >0" class="btn-text-small color303030" @click="handleLookResc(record.funcId)">
+                                         <a v-if="record.rescVOList !==null && record.rescVOList.length >0" class="btn-text-small color_link" @click="handleLookResc(record.funcId)">
                                              {{record.rescVOList.map(item=>{return item.rescUrl}).join(",") }}
                                          </a>
-                                        <a v-else class="btn-text-small color303030" @click="handleLookResc(record.funcId)">-</a>
+                                        <a v-else class="btn-text-small color_link" @click="handleLookResc(record.funcId)">-</a>
                                     </span>
                             </template>
                             <template #action="{ record }">
                                 <div class="action-btns">
                                     <!-- 常用按钮 -->
                                     <a  class="btn-text-mini" href="javascript:;" @click="handleUpdate(record.funcId)" v-permission="'auth:func:update'"><EditOutlined/>编辑</a>
-                                    <a  class="btn-text-mini" href="javascript:;"  @click="handleBindResc(record.funcId)" v-permission="'auth:func:rescUpdate'"><SettingOutlined /> 资源</a>
+                                    <a  class="btn-text-mini" href="javascript:;"  @click="handleBindResc(record.funcId)" v-permission="'auth:func:rescUpdate'"><LinkOutlined /> 资源</a>
                                     <a-popconfirm
                                             title="您确定要删除该功能吗?"
                                             ok-text="确定"
@@ -168,7 +168,7 @@ export default {
                     funcName: '',
                     funcKey: '',
                     funcType: '',
-                    rescUrl: '',
+                    rescUrl:  '',
                     funcDirStatus: '',
                 },
                 parentFunc: {},
@@ -357,6 +357,7 @@ export default {
             },
         },
         created() {
+            this.searchParams.rescUrl =  this.$route.params.rescUrl || '';
             this.pageSearchChange();
         }
     }
