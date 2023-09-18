@@ -32,3 +32,15 @@ export const eduCourseUpdateStatus = data => {
         data: data
     })
 }
+
+
+/**
+ * 课程分类列表
+ */
+export const eduCatalogTree = data => {
+    return http({
+        url: `/edu/catalog/tree`,
+        method: 'get',
+        data: data
+    })
+}

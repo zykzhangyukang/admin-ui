@@ -121,7 +121,7 @@
                         title: '课程名称',
                         dataIndex: 'courseName',
                         key: 'courseName',
-                        width: 500,
+                        width: 400,
                         ellipsis:  true,
                     },
                     {
