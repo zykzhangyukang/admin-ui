@@ -30,17 +30,15 @@
                         <template #overlay>
                             <a-menu>
                                 <a-menu-item key="1" @click="handleUpdateStatus('enable')">
-                                    <ArrowUpOutlined />
                                     更新上架
                                 </a-menu-item>
                                 <a-menu-item key="2" @click="handleUpdateStatus('disable')">
-                                    <ArrowDownOutlined />
                                     更新下架
                                 </a-menu-item>
                             </a-menu>
                         </template>
                         <a-button :loading="btnLoading">
-                            更新状态
+                            状态更新
                             <DownOutlined />
                         </a-button>
                     </a-dropdown>
@@ -60,7 +58,7 @@
                     <a-tag v-if="text==='enable'" color="green">
                         {{ courseStatusGName[text] }}
                     </a-tag>
-                    <a-tag v-else-if="text==='disable'" color="red">
+                    <a-tag v-else-if="text==='disable'" >
                         {{ courseStatusGName[text] }}
                     </a-tag>
                     <a-tag v-else-if="text==='wait'" color="orange">
@@ -73,7 +71,7 @@
 
                 <template #action="{ record }">
                     <div class="action-btns">
-                        <a class="btn-text-mini color_link" href="javascript:;" @click="handleToChapter(record.courseId)" ><UnorderedListOutlined /> 大章管理</a>
+                        <a class="btn-text-mini" href="javascript:;" @click="handleToChapter(record.courseId)" ><FolderOutlined /> 课程章节</a>
                     </div>
                 </template>
             </HTable>
@@ -121,7 +119,7 @@
                         title: '课程名称',
                         dataIndex: 'courseName',
                         key: 'courseName',
-                        width: 400,
+                        width: 350,
                         ellipsis:  true,
                     },
                     {
@@ -134,6 +132,11 @@
                         title: '创建时间',
                         dataIndex: 'createTime',
                         key: 'createTime',
+                    },
+                    {
+                        title: '更新时间',
+                        dataIndex: 'updateTime',
+                        key: 'updateTime',
                     },
                     {
                         title: '课程状态',

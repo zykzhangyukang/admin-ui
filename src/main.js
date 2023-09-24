@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import Antd from 'ant-design-vue';
+import antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.less';
 import './style/base.less'
 import './style/App.less'
@@ -19,7 +19,7 @@ Object.keys(antIcons).forEach(key => {
 // 添加到全局
 app.config.globalProperties.$antIcons = antIcons
 app
-    .use(Antd)
+    .use(antd)
     .use(store)
     .use(router)
     .use(permission)

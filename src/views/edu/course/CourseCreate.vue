@@ -8,7 +8,7 @@
             <a-card>
                 <a-form  :model="form">
                     <a-form-item label="课程标题">
-                        <a-input  v-model:value="form.courseName" placeholder="请输入课程标题，字数限制10-25字符" allow-clear/>
+                        <a-input  v-model:value="form.courseName" placeholder="请输入课程标题，字数限制5-30字符" allow-clear/>
                     </a-form-item>
                     <a-form-item label="课程描述" name="description">
                         <a-textarea  v-model:value="form.description" placeholder="课程描述信息" allow-clear :rows="4"/>

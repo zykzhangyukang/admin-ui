@@ -16,6 +16,14 @@ module.exports = {
   configureWebpack: config => {
     if (process.env.ENV === 'production') {
       config.plugins.push(new EndWebpackPlugin('dist','bizedu-ui'))
+      config.externals = {
+        vue: 'Vue',
+        axios: 'axios',
+        moment: 'moment',
+        screenfull: 'screenfull',
+        'vue-router': 'VueRouter',
+        // 'ant-design-vue': 'antd',
+      }
     }
   },
   chainWebpack: (config) => {

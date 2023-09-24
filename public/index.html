@@ -6,9 +6,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>企业在线课堂系统</title>
+    <% if (process.env.NODE_ENV === 'production') { %>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.0.0/vue.global.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue-router/4.0.0/vue-router.global.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/screenfull.js/5.0.2/screenfull.min.js"></script>
+<!--    <script src="https://cdn.bootcdn.net/ajax/libs/ant-design-vue/2.0.0-beta.6/antd-with-locales.min.js"></script>-->
+    <% } %>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!-- built files will be auto injected -->
   </body>
