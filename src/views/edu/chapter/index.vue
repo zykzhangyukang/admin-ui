@@ -1,5 +1,5 @@
 <template>
-    <h1>小节管理</h1>
+    <h1>章节管理</h1>
 </template>
 
 <script>

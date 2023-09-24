@@ -14,7 +14,7 @@
                         <a-textarea  v-model:value="form.description" placeholder="课程描述信息" allow-clear :rows="4"/>
                     </a-form-item>
                     <a-form-item :wrapper-col="form.wrapperCol">
-                        <a-button type="primary" @click="handleSave" :loading="confirmLoading">保存课程</a-button>
+                        <a-button type="primary" @click="handleSave" :loading="confirmLoading">立即创建</a-button>
                         <a-button class="ml15" @click="this.$router.go(-1)">返回</a-button>
                         <a-button class="ml15" @click="handleRest">重置</a-button>
                     </a-form-item>

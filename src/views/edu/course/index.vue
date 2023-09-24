@@ -49,6 +49,7 @@
                     :pagination='false'
                     :loading='tableLoading'
                     rowKey='courseId'
+                    bordered
                     :columns='tableColumns'
                     :expandRowByClick="true"
                     :data-source='tableData'
@@ -127,6 +128,7 @@
                         dataIndex: 'description',
                         key: 'description',
                         ellipsis:  true,
+                        width: 350,
                     },
                     {
                         title: '创建时间',
