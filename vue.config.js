@@ -22,7 +22,7 @@ module.exports = {
         moment: 'moment',
         screenfull: 'screenfull',
         'vue-router': 'VueRouter',
-        // 'ant-design-vue': 'antd',
+        'ant-design-vue': 'antd',
       }
     }
   },
