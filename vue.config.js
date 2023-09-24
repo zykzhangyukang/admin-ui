@@ -21,6 +21,7 @@ module.exports = {
         axios: 'axios',
         moment: 'moment',
         screenfull: 'screenfull',
+        nprogress: 'NProgress',
         'vue-router': 'VueRouter',
         'ant-design-vue': 'antd',
       }

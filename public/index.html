@@ -8,11 +8,13 @@
     <title>企业在线课堂系统</title>
     <% if (process.env.NODE_ENV === 'production') { %>
     <link rel="stylesheet" type="text/css" href="https://ioss-bucket.oss-cn-shenzhen.aliyuncs.com/cdn/antd.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.css">
     <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.0.0/vue.global.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/vue-router/4.0.0/vue-router.global.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/screenfull.js/5.0.2/screenfull.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
     <script src="https://ioss-bucket.oss-cn-shenzhen.aliyuncs.com/cdn/antd.min.js"></script>
     <% } %>
 </head>
@@ -22,7 +24,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        min-height: 100vh;
+        min-height: 80vh;
         height: 100%
     }
 
