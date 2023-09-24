@@ -30,7 +30,7 @@ EndWebpackPlugin.prototype.apply = function(compiler) {
   compiler.plugin('done', function() {
     setTimeout(() => {
       console.log('webpack编译完成！！！');
-      zip(globalDir,globalProjectName);
+      //zip(globalDir,globalProjectName);
     }, 300);
   });
 };
