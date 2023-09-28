@@ -22,13 +22,16 @@
 @import '../style/layout.less';
 </style>
 <script>
-import store from '../store';
-import AppAside from './AppAside'
-import AppHeader from './AppHeader'
-import AppFooter from './AppFooter'
-import avatar from '@/assets/images/user.png'
-import {authUserLogout} from '@/api/auth';
-//返回除了首页之外的面包屑
+  import store from '../store';
+  import AppAside from './AppAside'
+  import AppHeader from './AppHeader'
+  import AppFooter from './AppFooter'
+  import avatar from '@/assets/images/user.png'
+  import {authUserLogout} from '@/api/auth';
+  import {Modal} from "ant-design-vue";
+  import {createVNode} from "vue";
+  import {ExclamationCircleOutlined} from '@ant-design/icons-vue';
+  //返回除了首页之外的面包屑
 const getBreadCrumb = (pathname,menuTree,crumb) => {
   // 首页返回false
   if(pathname === '/dashboard') return false;
@@ -88,9 +91,19 @@ export default {
       store.setAppMenuToggle(!this.menuToggle);
     },
     async loginOut() {
-      await authUserLogout();
-      localStorage.clear();
-      await this.$router.push('/login');
+      let _this = this;
+      Modal.confirm({
+        title: '注销登录',
+        content: '您确定是否注销登录，您将退出后台系统！',
+        icon: createVNode(ExclamationCircleOutlined),
+        okText: '确认',
+        cancelText: '取消',
+        onOk() {
+          localStorage.clear();
+          _this.$router.push('/login');
+          authUserLogout();
+        },
+      });
     }
   },
   watch: {
