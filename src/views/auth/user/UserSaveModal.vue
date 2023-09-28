@@ -10,13 +10,13 @@
         <a-spin :spinning="spinning" >
         <a-form :model="form" :label-col="labelCol" :wrapper-col="wrapperCol"  ref="formRef" :rules="formRules">
             <a-form-item label="登录账号" name="username">
-                <a-input v-model:value="form.username" autocomplete="off" />
+                <a-input v-model:value="form.username" placeholder="登录账号"  autocomplete="off" />
             </a-form-item>
             <a-form-item label="登录密码"  name="password">
-                <a-input-password v-model:value="form.password" :visibility-toggle="true" autocomplete="off" />
+                <a-input-password v-model:value="form.password" placeholder="登录密码"  :visibility-toggle="true" autocomplete="off" />
             </a-form-item>
             <a-form-item label="真实姓名" name="realName">
-                <a-input v-model:value="form.realName" autocomplete="off" />
+                <a-input v-model:value="form.realName" placeholder="真实姓名" autocomplete="off" />
             </a-form-item>
             <a-form-item label="所属部门"  name="deptCode">
                 <a-select v-model:value="form.deptCode" placeholder="请选择部门" :style="{width:'200px'}" autocomplete="off">

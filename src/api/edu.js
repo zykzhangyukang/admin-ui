@@ -44,3 +44,24 @@ export const eduCatalogTree = data => {
         data: data
     })
 }
+
+/**
+ * 课程分类列表
+ */
+export const eduCatalogSave = data => {
+    return http({
+        url: `/edu/catalog/save`,
+        method: 'post',
+        data: data
+    })
+}
+
+/**
+ * 删除课程分类
+ */
+export const eduCatalogDelete = id => {
+    return http({
+        url: `/edu/catalog/delete?catalogId=${id}`,
+        method: 'delete',
+    })
+}

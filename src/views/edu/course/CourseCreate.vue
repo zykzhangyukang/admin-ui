@@ -8,7 +8,18 @@
             <a-card>
                 <a-form  :model="form">
                     <a-form-item label="课程标题">
-                        <a-input  v-model:value="form.courseName" placeholder="请输入课程标题，字数限制5-30字符" allow-clear/>
+                        <a-input v-model:value="form.courseName" placeholder="请输入课程标题，字数限制5-30字符" allow-clear/>
+                    </a-form-item>
+                    <a-form-item label="课程分类">
+                        <a-tree-select
+                                placeholder="请选择课程分类"
+                                v-model:value="form.catalogIdList"
+                                style="width: 100%"
+                                :tree-data="catalogData"
+                                :replaceFields="replaceFields"
+                                tree-checkable
+                                search-placeholder="请选择课程分类"
+                        />
                     </a-form-item>
                     <a-form-item label="课程描述" name="description">
                         <a-textarea  v-model:value="form.description" placeholder="课程描述信息" allow-clear :rows="4"/>
@@ -25,13 +36,17 @@
 </template>
 
 <script>
-    import {eduCourseSave} from "@/api/edu";
-
+    import {eduCatalogTree, eduCourseSave} from "@/api/edu";
     export default {
         name: "CourseCreate.vue",
         data() {
             return {
-                form: {},
+                catalogData: [],
+                replaceFields: {children:'children', title:'catalogName', key:'catalogId', value: 'catalogId' },
+                form: {
+                    catalogIdList: [],
+                    courseName: '',
+                },
                 spinning: false,
                 confirmLoading: false,
             }
@@ -52,7 +67,15 @@
                 this.form = {
                     ...this.$options.data().searchParams,
                 }
+            },
+            getCatalogTree(){
+              eduCatalogTree().then(res=>{
+                  this.catalogData = res.result;
+              })
             }
+        },
+        created() {
+            this.getCatalogTree();
         }
     }
 </script>
