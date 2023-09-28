@@ -2,6 +2,17 @@ import http from '../utils/request'
 
 
 /**
+ * 角色列表
+ */
+export const authLogPage = data => {
+    return http({
+        url: `/auth/log/page`,
+        method: 'post',
+        data: data
+    })
+}
+
+/**
  * 根据id获取资源信息
  */
 export const authFuncSelectById = (id) => {

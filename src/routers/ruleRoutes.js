@@ -3,6 +3,7 @@ const authRole = () => import(/* webpackChunkName: 'authRole' */'../views/auth/r
 const authRoleAuthorized = ()=> import(/* webpackChunkName: 'authRoleAuthorized' */'../views/auth/role/RoleAuthorized');
 const authResc = () => import(/* webpackChunkName: 'authResc' */'../views/auth/resc/index');
 const authFunc = () => import(/* webpackChunkName: 'authFunc' */'../views/auth/func/index');
+const authLog = () => import(/* webpackChunkName: 'authLog' */'../views/auth/log/index');
 
 
 const eduCourse = () => import(/* webpackChunkName: 'eduCourse' */'../views/edu/course/index');
@@ -20,6 +21,7 @@ const routes = [
     { path: '/auth/role/authorized' ,name: 'AuthRoleAuthorized', component: authRoleAuthorized},
     {path: '/auth/resc', name: 'AuthResc', component: authResc},
     {path: '/auth/func', name: 'AuthFunc', component: authFunc},
+    {path: '/auth/log', name: 'AuthLog', component: authLog},
 
     // 后台课程系统
     {path: '/edu/course', name: 'EduCourse', component: eduCourse},
