@@ -30,6 +30,9 @@
                 <a-form-item>
                     <a-button type="default" @click="pageSearchReset">重置</a-button>
                 </a-form-item>
+                <a-form-item>
+                    <a-button type="default" @click="handleRescRefresh" v-permission="'auth:resc:refresh'"><SettingOutlined />资源刷新</a-button>
+                </a-form-item>
             </a-form>
             <HTable
                     bordered
@@ -76,7 +79,7 @@
 
 <script>
 
-    import {authRescDelete, authRescPage} from "@/api/auth";
+    import {authRescDelete, authRescPage, authRescRefresh} from "@/api/auth";
     import constant, {bizeduDomain} from "@/utils/constant";
     import rescSaveModal from "@/views/auth/resc/RescSaveModal";
     import rescUpdateModal from "@/views/auth/resc/RescUpdateModal";
@@ -168,6 +171,11 @@
             }
         },
         methods:{
+            handleRescRefresh() {
+                authRescRefresh().then(e=>{
+                    this.$message.success("刷新系统资源成功！");
+                })
+            },
             handleUpdate(id){
                 this.$refs['rescUpdateModal'].open(id);
             },

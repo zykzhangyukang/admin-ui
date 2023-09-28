@@ -165,6 +165,16 @@ export const authRescSave = data => {
     })
 }
 
+/**
+ * 刷新系统资源
+ */
+export const authRescRefresh = data => {
+    return http({
+        url: `/auth/resc/refresh`,
+        method: 'put',
+        data: data
+    })
+}
 
 /**
  * 资源列表

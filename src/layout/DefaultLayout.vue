@@ -92,6 +92,8 @@ export default {
     },
     async loginOut() {
       let _this = this;
+      const userToken = localStorage.getItem('token');
+      localStorage.clear();
       Modal.confirm({
         title: '注销登录',
         content: '您确定是否注销登录，您将退出后台系统！',
@@ -99,9 +101,11 @@ export default {
         okText: '确认',
         cancelText: '取消',
         onOk() {
-          localStorage.clear();
           _this.$router.push('/login');
-          authUserLogout();
+          if(userToken){
+            let params = {token: userToken}
+            authUserLogout( params);
+          }
         },
       });
     }

@@ -67,6 +67,10 @@ http.interceptors.response.use(
 
                 message.error(' 您访问的资源不存在！（404）');
 
+            } else if (error.response.status === 429) {
+
+                message.error(' 您的请求过于频繁！（429）');
+
             } else if (error.response.status === 503) {
 
                 message.error(' 网关转发异常，请稍后再试！');

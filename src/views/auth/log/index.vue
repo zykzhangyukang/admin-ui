@@ -15,8 +15,11 @@
                         <a-select-option v-for="item in logLevelG" :value="item.code" :key="item.code">{{logLevelGName[item.code]}}</a-select-option>
                     </a-select>
                 </a-form-item>
-                <a-form-item label="操作人" name='username'>
-                    <a-input v-model:value="searchParams.username" :style="{width:'180px'}" placeholder="操作人输入框"  autocomplete="off" ></a-input>
+                <a-form-item label="操作人账号" name='username'>
+                    <a-input v-model:value="searchParams.username" :style="{width:'180px'}" placeholder="操作人账号输入框"  autocomplete="off" ></a-input>
+                </a-form-item>
+                <a-form-item label="操作人姓名" name='realName'>
+                    <a-input v-model:value="searchParams.realName" :style="{width:'180px'}" placeholder="操作人姓名输入框"  autocomplete="off" ></a-input>
                 </a-form-item>
                 <a-form-item>
                     <a-button type="primary" @click="pageSearchChange" v-permission="'auth:log:page'">搜索</a-button>
@@ -71,6 +74,7 @@
                     currentPage: 1,
                     pageSize: 20,
                     username: '',
+                    realName: '',
                     logModule: '',
                     logLevel: ''
                 },
