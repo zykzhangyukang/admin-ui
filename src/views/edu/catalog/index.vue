@@ -4,7 +4,7 @@
             <div :style="{'textAlign':'right','marginBottom': '15px'}">
                 <a-button type="info" class="ml15" @click="this.queryData" > <ReloadOutlined /> 列表刷新</a-button>
                 <a-button type="info" class="ml15" @click="pageSearchReset">取消勾选</a-button>
-                <a-button type="info" class="ml15" @click="handleDelete" v-permission="'edu:catalog:delete'">删除分类</a-button>
+                <a-button type="info" class="ml15" @click="handleDelete" v-permission="'edu:catalog:delete'" :loading="delBtnLoading">删除分类</a-button>
                 <a-button type="primary"  class="ml15"  @click="handleAdd" v-permission="'edu:catalog:add'"><PlusOutlined /> 新增分类</a-button>
             </div>
             <HTable
@@ -47,6 +47,7 @@
                 selectedRows: [],
                 tableData: [],
                 tableLoading: true,
+                delBtnLoading: false,
                 tableColumns: [
                     {
                         title: '课程分类',
@@ -83,9 +84,14 @@
                     okText: '确认',
                     cancelText: '取消',
                     onOk() {
+                        _this.delBtnLoading = true;
                         eduCatalogDelete(_this.selectedRows[0].catalogId).then(res => {
                             _this.$message.success("删除分类成功！");
                             _this.queryData();
+                            _this.selectedRows = [];
+                            _this.selectedRowKeysArray = [];
+                        }).finally(()=>{
+                            _this.delBtnLoading = false;
                         })
                     },
                 });
