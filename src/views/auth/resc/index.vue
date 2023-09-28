@@ -31,7 +31,7 @@
                     <a-button type="default" @click="pageSearchReset">重置</a-button>
                 </a-form-item>
                 <a-form-item>
-                    <a-button type="default" @click="handleRescRefresh" v-permission="'auth:resc:refresh'"><SettingOutlined />资源刷新</a-button>
+                    <a-button type="default" @click="handleRescRefresh" v-permission="'auth:resc:refresh'" :loading="btnLoading">资源刷新</a-button>
                 </a-form-item>
             </a-form>
             <HTable
@@ -97,6 +97,7 @@
         data() {
             return {
                 toolbarFixed: true,
+                btnLoading: false,
                 searchParams: {
                     currentPage: 1,
                     pageSize: 20,
@@ -172,8 +173,11 @@
         },
         methods:{
             handleRescRefresh() {
+                this.btnLoading = true;
                 authRescRefresh().then(e=>{
                     this.$message.success("刷新系统资源成功！");
+                }).finally(()=>{
+                    this.btnLoading  = false;
                 })
             },
             handleUpdate(id){
