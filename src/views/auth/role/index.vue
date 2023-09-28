@@ -123,8 +123,10 @@
                 this.$refs['roleUpdateModal'].open(id);
             },
             handleDelete(id){
+                this.tableLoading = true;
                 authRoleDelete(id).then(res=>{
                     this.$message.success("删除角色成功！");
+                    this.tableLoading = false;
                     this.queryData();
                 })
             },

@@ -205,8 +205,10 @@
                     okText: "确定",
                     icon: () => createVNode(ExclamationCircleOutlined),
                     onOk() {
+                        _this.tableLoading = true;
                         authUserEnable(userId).then(res=>{
                             _this.$message.success("启用用户成功！");
+                            _this.tableLoading = false;
                             _this.queryData();
                         })
                     },
@@ -247,8 +249,10 @@
                         okText: "确定",
                         icon: () => createVNode(ExclamationCircleOutlined),
                         onOk() {
+                            _this.tableLoading = true;
                             authUserDisable(userId).then(res=>{
                                 _this.$message.success("锁定用户成功！");
+                                _this.tableLoading = false;
                                 _this.queryData();
                             })
                         },
@@ -259,8 +263,10 @@
                 this.$refs['userUpdateModal'].open(id);
             },
             handleDelete(id){
+                this.tableLoading = true;
                 authUserDelete(id).then(e=>{
                     this.$message.success("删除用户成功！");
+                    this.tableLoading = false;
                     this.queryData();
                 })
             },

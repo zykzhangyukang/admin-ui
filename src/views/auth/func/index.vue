@@ -311,8 +311,10 @@ export default {
             })
           },
             handleDelete(id){
+                this.tableLoading = true;
                 authFuncDelete(id).then(e=>{
                     this.$message.success("删除功能成功！");
+                    this.tableLoading = false;
                     this.queryData();
                 })
             },

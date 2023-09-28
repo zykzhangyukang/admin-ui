@@ -187,8 +187,10 @@
                 this.$router.push({ name: "AuthFunc", params: { rescUrl: rescUrl } })
             },
             handleDelete(id){
+                this.tableLoading = true;
                 authRescDelete(id).then(e=>{
                     this.$message.success("删除资源成功！");
+                    this.tableLoading = false;
                     this.queryData();
                 })
             },
