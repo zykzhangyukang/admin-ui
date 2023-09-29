@@ -37,6 +37,8 @@ module.exports = {
       less: {
         lessOptions: {
           modifyVars: {
+            // 'primary-color': '#0064c8', // 主色调
+            // 'link-color': '#0070cc', // 链接颜色
           },
           javascriptEnabled: true,
         },

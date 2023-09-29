@@ -41,6 +41,7 @@
                         </a-menu>
                     </template>
                     <div class='ant-dropdown-link'>
+                        <div class="username">{{user.info.realName}}</div>
                         <a-avatar :src='avatar' alt='avatar' :style="{ cursor: 'pointer' }">
                             <template v-slot:icon>
                                 <UserOutlined/>
@@ -142,3 +143,13 @@
         }
     }
 </script>
+<style>
+    .username{
+        font-size: 13px;
+        cursor: pointer;
+        color: #333;
+        height: 100%;
+        padding-right: 5px;
+        display: inline-block;
+    }
+</style>
