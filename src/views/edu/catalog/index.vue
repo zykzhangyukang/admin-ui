@@ -18,8 +18,8 @@
             >
                 <template #catalogName="{ record }">
                  <span style="cursor: pointer">
-                       <img v-if="(record.children && record.children.length > 0) || record.parentId === 0"  :src="require('@/assets/images/folder.svg')" class="tree-icon" >
-                       <img v-else :src="require('@/assets/images/func.svg')" class="tree-icon" >
+                       <img v-if="(record.children && record.children.length > 0) || record.parentId === 0"  :src="require('@/assets/images/folder-open.svg')" class="tree-icon" >
+                       <img v-else :src="require('@/assets/images/catalog.svg')" class="tree-icon" >
                        <span class="ml15"> {{record.catalogName}}</span>
                  </span>
                 </template>
@@ -136,6 +136,6 @@
         height: 15px;
         user-select: none;
         -webkit-user-drag: none;
-        margin-left: 20px;
+        margin-left: 10px;
     }
 </style>

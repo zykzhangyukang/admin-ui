@@ -74,7 +74,7 @@
                             <template #action="{ record }">
                                 <div class="action-btns">
                                     <!-- 常用按钮 -->
-                                    <a  class="btn-text-mini" href="javascript:;" @click="handleUpdate(record.funcId)" v-permission="'auth:func:update'"><EditOutlined/>编辑</a>
+                                    <a  class="btn-text-mini" href="javascript:;" @click="handleUpdate(record.funcId)" v-permission="'auth:func:update'"><FormOutlined />编辑</a>
                                     <a  class="btn-text-mini" href="javascript:;"  @click="handleBindResc(record.funcId)" v-permission="'auth:func:rescUpdate'"><LinkOutlined /> 资源</a>
                                     <a-popconfirm
                                             title="您确定要删除该功能吗?"

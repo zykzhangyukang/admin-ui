@@ -29,7 +29,7 @@
             >
                 <template #action="{ record }">
                     <div class="action-btns">
-                        <a  class="btn-text-mini" href="javascript:;" @click="handleUpdate(record.roleId)" v-permission="'auth:role:update'"><EditOutlined/>编辑 </a>
+                        <a  class="btn-text-mini" href="javascript:;" @click="handleUpdate(record.roleId)" v-permission="'auth:role:update'"><FormOutlined />编辑 </a>
                        <a-popconfirm
                                title="您确定要删除该角色吗?"
                                ok-text="确定"

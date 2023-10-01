@@ -75,9 +75,17 @@
                     :rowSelection="{ selectedRowKeys: selectedRowKeysArray, onChange: onSelectChange, type: 'radio' }"
             >
                 <template #status="{ text }">
-                    {{ courseStatusGName[text] }}
+                    <small v-if="text==='enable'" style="color: #19be6b">
+                         {{ courseStatusGName[text] }}
+                    </small>
+                    <small v-else-if="text==='disable'" style="color: #ed4014">
+                         {{ courseStatusGName[text] }}
+                    </small>
+                    <small v-else style="color: #303030">{{courseStatusGName[text]}}</small>
                 </template>
-
+                <template #description="{ text }">
+                    <small> {{ text }}</small>
+                </template>
                 <template #action="{ record }">
                     <div class="action-btns">
                         <a class="btn-text-mini" href="javascript:;" @click="handleToChapter(record.courseId)">
@@ -133,7 +141,6 @@
                         title: '课程名称',
                         dataIndex: 'courseName',
                         key: 'courseName',
-                        width: 350,
                         ellipsis: true,
                     },
                     {
@@ -141,28 +148,24 @@
                         dataIndex: 'description',
                         key: 'description',
                         ellipsis: true,
-                        width: 350,
-                    },
-                    {
-                        title: '创建时间',
-                        dataIndex: 'createTime',
-                        key: 'createTime',
-                    },
-                    {
-                        title: '更新时间',
-                        dataIndex: 'updateTime',
-                        key: 'updateTime',
+                        slots: {customRender: 'description'},
                     },
                     {
                         title: '课程状态',
                         dataIndex: 'status',
                         key: 'status',
+                        align: 'center',
                         slots: {customRender: 'status'},
                     },
                     {
                         title: '创建人',
                         dataIndex: 'creatorName',
                         key: 'creatorName',
+                    },
+                    {
+                        title: '创建时间',
+                        dataIndex: 'createTime',
+                        key: 'createTime',
                     },
                     {
                         title: '操作',
