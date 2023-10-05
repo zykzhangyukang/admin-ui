@@ -154,7 +154,6 @@
                         title: '课程状态',
                         dataIndex: 'status',
                         key: 'status',
-                        align: 'center',
                         slots: {customRender: 'status'},
                     },
                     {
