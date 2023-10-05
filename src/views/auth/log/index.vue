@@ -1,6 +1,9 @@
 <template>
     <a-layout class='log-container'>
         <a-card>
+            <div :style="{'textAlign':'right'}">
+                <a-button type="primary" ><DownloadOutlined />导出日志</a-button>
+            </div>
             <a-form
                     :style="{'marginBottom':'10px'}"
                     layout='inline'

@@ -26,6 +26,7 @@
                     rowKey='roleId'
                     :columns='tableColumns'
                     :data-source='tableData'
+                    @change="sortChange"
             >
                 <template #action="{ record }">
                     <div class="action-btns">
@@ -75,7 +76,9 @@
                 searchParams: {
                     currentPage: 1,
                     pageSize: 20,
-                    roleName: ''
+                    roleName: '',
+                    sortType: '',
+                    sortField: '',
                 },
                 total: 0,
                 tableData: [],
@@ -99,11 +102,13 @@
                         title: '创建时间',
                         dataIndex: 'createTime',
                         key: 'createTime',
+                        sorter: true,
                     },
                     {
                         title: '更新时间',
                         dataIndex: 'updateTime',
                         key: 'updateTime',
+                        sorter: true,
                     },
                     {
                         title: '操作',
@@ -119,6 +124,17 @@
 
         },
         methods:{
+            sortChange(p, f, {field, order}) {
+                if (order === 'ascend') {
+                    this.searchParams.sortType = 'asc';
+                } else if (order === 'descend') {
+                    this.searchParams.sortType = 'desc';
+                } else {
+                    this.searchParams.sortType = '';
+                }
+                this.searchParams.sortField = field || '';
+                this.queryData();
+            },
             handleUpdate(id){
                 this.$refs['roleUpdateModal'].open(id);
             },
@@ -126,8 +142,9 @@
                 this.tableLoading = true;
                 authRoleDelete(id).then(res=>{
                     this.$message.success("删除角色成功！");
-                    this.tableLoading = false;
                     this.queryData();
+                }).finally(()=>{
+                    this.tableLoading = false;
                 })
             },
             handleAdd(){
@@ -142,9 +159,14 @@
                     currentPage: this.searchParams.currentPage,
                     pageSize: this.searchParams.pageSize
                 }
+                const sort = {
+                    sortType : this.searchParams.sortType,
+                    sortField : this.searchParams.sortField,
+                }
                 this.searchParams = {
                     ...this.$options.data().searchParams,
-                    ...page
+                    ...page,
+                    ...sort
                 }
             },
             pageCurrentChange(page, pageSize) {

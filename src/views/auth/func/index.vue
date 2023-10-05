@@ -50,6 +50,7 @@
                                 :loading='tableLoading'
                                 :columns='tableColumns'
                                 :data-source='tableData'
+                                @change="sortChange"
                         >
                             <template #funcIcon="{ text }">
                                 <span v-if="text">
@@ -170,6 +171,8 @@ export default {
                     funcType: '',
                     rescUrl:  '',
                     funcDirStatus: '',
+                    sortType: '',
+                    sortField: '',
                 },
                 parentFunc: {},
                 total: 0,
@@ -193,6 +196,7 @@ export default {
                         key: 'funcType',
                         align: 'center',
                         slots: {customRender: 'funcType'},
+                        sorter: true,
                     },
                     {
                         title: '功能Key',
@@ -201,6 +205,7 @@ export default {
                         ellipsis: true,
                         width: '180px',
                         slots: {customRender: 'funcKey'},
+                        sorter: true,
                     },
                     {
                         title: '资源列表',
@@ -216,6 +221,7 @@ export default {
                         dataIndex: 'funcSort',
                         align: 'center',
                         key: 'funcSort',
+                        sorter: true,
                     },
                     {
                         title: '菜单图标',
@@ -232,6 +238,7 @@ export default {
                         key: 'updateTime',
                         width: '150px',
                         ellipsis: true,
+                        sorter: true,
                     },
                     {
                         title: '操作',
@@ -259,6 +266,17 @@ export default {
             },
         },
         methods:{
+            sortChange(p, f, {field, order}) {
+                if (order === 'ascend') {
+                    this.searchParams.sortType = 'asc';
+                } else if (order === 'descend') {
+                    this.searchParams.sortType = 'desc';
+                } else {
+                    this.searchParams.sortType = '';
+                }
+                this.searchParams.sortField = field || '';
+                this.queryData();
+            },
             handleSelectNode(item){
                 if(item && item.funcId !==null){
                     this.parentFunc = item;
@@ -314,8 +332,9 @@ export default {
                 this.tableLoading = true;
                 authFuncDelete(id).then(e=>{
                     this.$message.success("删除功能成功！");
-                    this.tableLoading = false;
                     this.queryData();
+                }).finally(()=>{
+                    this.tableLoading = false;
                 })
             },
             handleAdd(){
@@ -330,9 +349,14 @@ export default {
                     currentPage: this.searchParams.currentPage,
                     pageSize: this.searchParams.pageSize
                 }
+                const sort = {
+                    sortType : this.searchParams.sortType,
+                    sortField : this.searchParams.sortField,
+                }
                 this.searchParams = {
                     ...this.$options.data().searchParams,
-                    ...page
+                    ...page,
+                    ...sort
                 }
                 this.parentFunc = {};
                 this.$refs['funcLeftTree'].resetSelect();

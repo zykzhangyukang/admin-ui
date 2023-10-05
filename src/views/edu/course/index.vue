@@ -75,13 +75,13 @@
                     :rowSelection="{ selectedRowKeys: selectedRowKeysArray, onChange: onSelectChange, type: 'radio' }"
             >
                 <template #status="{ text }">
-                    <small v-if="text==='enable'" style="color: #19be6b">
+                    <a-tag v-if="text==='enable'" style="color: #19be6b">
                          {{ courseStatusGName[text] }}
-                    </small>
-                    <small v-else-if="text==='disable'" style="color: #ed4014">
+                    </a-tag>
+                    <a-tag v-else-if="text==='disable'" style="color: #ed4014">
                          {{ courseStatusGName[text] }}
-                    </small>
-                    <small v-else style="color: #303030">{{courseStatusGName[text]}}</small>
+                    </a-tag>
+                    <a-tag v-else style="color: #303030">{{courseStatusGName[text]}}</a-tag>
                 </template>
                 <template #description="{ text }">
                     <small> {{ text }}</small>
@@ -141,6 +141,7 @@
                         title: '课程名称',
                         dataIndex: 'courseName',
                         key: 'courseName',
+                        align: 'center',
                         ellipsis: true,
                     },
                     {
@@ -148,23 +149,33 @@
                         dataIndex: 'description',
                         key: 'description',
                         ellipsis: true,
+                        align: 'center',
                         slots: {customRender: 'description'},
                     },
                     {
                         title: '课程状态',
                         dataIndex: 'status',
                         key: 'status',
+                        align: 'center',
                         slots: {customRender: 'status'},
                     },
                     {
                         title: '创建人',
                         dataIndex: 'creatorName',
                         key: 'creatorName',
+                        align: 'center',
                     },
                     {
                         title: '创建时间',
                         dataIndex: 'createTime',
+                        align: 'center',
                         key: 'createTime',
+                    },
+                    {
+                        title: '更新时间',
+                        dataIndex: 'updateTime',
+                        align: 'center',
+                        key: 'updateTime',
                     },
                     {
                         title: '操作',

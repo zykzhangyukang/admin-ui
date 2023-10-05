@@ -41,6 +41,7 @@
                     :loading='tableLoading'
                     :columns='tableColumns'
                     :data-source='tableData'
+                    @change="sortChange"
             >
                 <template #rescDomain="{ text }">
                     {{ rescDomainName[text] }}
@@ -104,7 +105,9 @@
                     rescName: '',
                     rescUrl: '',
                     rescDomain: '',
-                    methodType: ''
+                    methodType: '',
+                    sortType: '',
+                    sortField: '',
                 },
                 total: 0,
                 tableData: [],
@@ -124,28 +127,33 @@
                         dataIndex: 'rescUrl',
                         key: 'rescUrl',
                         ellipsis:  true,
+                        sorter: true,
                     },
                     {
                         title: '请求方法类型',
                         dataIndex: 'methodType',
                         key: 'methodType',
+                        sorter: true,
                         slots: { customRender: 'methodType' },
                     },
                     {
                         title: '所属系统',
                         dataIndex: 'rescDomain',
                         key: 'rescDomain',
+                        sorter: true,
                         slots: { customRender: 'rescDomain' },
                     },
                     {
                         title: '创建时间',
                         dataIndex: 'createTime',
                         key: 'createTime',
+                        sorter: true,
                     },
                     {
                         title: '更新时间',
                         dataIndex: 'updateTime',
                         key: 'updateTime',
+                        sorter: true,
                     },
                     {
                         title: '操作',
@@ -172,6 +180,17 @@
             }
         },
         methods:{
+            sortChange(p, f, {field, order}) {
+                if (order === 'ascend') {
+                    this.searchParams.sortType = 'asc';
+                } else if (order === 'descend') {
+                    this.searchParams.sortType = 'desc';
+                } else {
+                    this.searchParams.sortType = '';
+                }
+                this.searchParams.sortField = field || '';
+                this.queryData();
+            },
             handleRescRefresh() {
                 this.btnLoading = true;
                 authRescRefresh().then(e=>{
@@ -190,8 +209,9 @@
                 this.tableLoading = true;
                 authRescDelete(id).then(e=>{
                     this.$message.success("删除资源成功！");
-                    this.tableLoading = false;
                     this.queryData();
+                }).finally(()=>{
+                    this.tableLoading = false;
                 })
             },
             handleAdd(){
@@ -206,9 +226,14 @@
                     currentPage: this.searchParams.currentPage,
                     pageSize: this.searchParams.pageSize
                 }
+                const sort = {
+                    sortType : this.searchParams.sortType,
+                    sortField : this.searchParams.sortField,
+                }
                 this.searchParams = {
                     ...this.$options.data().searchParams,
-                    ...page
+                    ...page,
+                    ...sort
                 }
             },
             pageCurrentChange(page, pageSize) {
