@@ -91,8 +91,8 @@
                     :current="searchParams.currentPage"
                     :page-size="searchParams.pageSize"
                     :total="total"
-                    @change="pageCurrentChange"
-                    @showSizeChange="pageSizeChange">
+                    @current-change="pageCurrentChange"
+                    @size-change="pageSizeChange">
             </HPage>
             <!-- 新增用户 -->
             <user-save-modal  ref="userSaveModal" @success="queryData"></user-save-modal>
@@ -284,7 +284,7 @@
                 authUserDelete(id).then(e=>{
                     this.$message.success("删除用户成功！");
                     this.queryData();
-                }).then(()=>{
+                }).finally(()=>{
                     this.tableLoading = false;
                 })
             },
