@@ -75,16 +75,16 @@
                     :rowSelection="{ selectedRowKeys: selectedRowKeysArray, onChange: onSelectChange, type: 'radio' }"
             >
                 <template #status="{ text }">
-                    <a-tag v-if="text==='enable'" style="color: #19be6b">
+                    <span v-if="text==='enable'" style="color: #19be6b">
                          {{ courseStatusGName[text] }}
-                    </a-tag>
-                    <a-tag v-else-if="text==='disable'" style="color: #ed4014">
+                    </span>
+                    <span v-else-if="text==='disable'" style="color: #ed4014">
                          {{ courseStatusGName[text] }}
-                    </a-tag>
-                    <a-tag v-else style="color: #303030">{{courseStatusGName[text]}}</a-tag>
+                    </span>
+                    <span v-else style="color: #303030">{{courseStatusGName[text]}}</span>
                 </template>
                 <template #description="{ text }">
-                    <small> {{ text }}</small>
+                    <span> {{ text }}</span>
                 </template>
                 <template #action="{ record }">
                     <div class="action-btns">

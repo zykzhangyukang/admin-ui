@@ -9,6 +9,11 @@ export default {
       info: {}
     },
     const: [],
+    // 消息通知
+    message:{
+      messageList: [],
+      noRead: 0,
+    }
   }),
   setMenuItem(item, key, value) {
     item[key] = value;
@@ -35,5 +40,12 @@ export default {
     Object.keys(list).forEach(key => {
       _store.const[key] = list[key]
     });
+  },
+  addUserMsg(msg) {
+    this.state.message.messageList.unshift(msg);
+    this.state.message.noRead += 1
+    if (this.state.message.messageList.length > 10) {
+      this.state.message.messageList = this.state.message.messageList.slice(0, 10)
+    }
   }
 }

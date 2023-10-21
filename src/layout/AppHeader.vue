@@ -8,6 +8,9 @@
             </div>
         </div>
         <div class="right">
+            <div>
+               <notifyNav></notifyNav>
+            </div>
             <div class="mr15" @click='screenFullChange'>
                 <ShrinkOutlined v-if='isScreenFull'/>
                 <ArrowsAltOutlined v-else/>
@@ -55,26 +58,28 @@
 </template>
 <script>
     import {
-        MenuUnfoldOutlined,
-        MenuFoldOutlined,
-        ShrinkOutlined,
         ArrowsAltOutlined,
         EditOutlined,
-        SettingOutlined,
-        LogoutOutlined,
         ExclamationCircleOutlined,
+        LogoutOutlined,
+        MenuFoldOutlined,
+        MenuUnfoldOutlined,
+        SettingOutlined,
+        ShrinkOutlined,
         UserOutlined
     } from '@ant-design/icons-vue';
     import HeaderBreadcrumb from './HeaderBreadcrumb';
     import screenfull from 'screenfull';
-    import { defineComponent, ref, createVNode } from 'vue';
-    import { Modal } from 'ant-design-vue';
+    import {createVNode} from 'vue';
+    import {Modal} from 'ant-design-vue';
     import {authUserRefreshLogin} from "@/api/auth";
     import store from "@/store";
+    import  notifyNav from "@/components/notify/notifyNav";
 
     export default {
         name: 'AppHeader',
         components: {
+            notifyNav,
             MenuUnfoldOutlined,
             MenuFoldOutlined,
             ShrinkOutlined,
