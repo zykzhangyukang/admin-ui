@@ -78,10 +78,9 @@
 
         this.$router.push('/').then(()=>{
           this.$message.success("用户登录成功！");
-        }).finally(e=>{
-          this.loading = false;
         })
-
+      }).finally(e=>{
+        this.loading = false;
       })
     },
     handleSubmitFinishFailed(errorInfo){
