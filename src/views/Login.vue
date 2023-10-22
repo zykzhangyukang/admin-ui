@@ -67,9 +67,6 @@
     }
   },
   methods: {
-    setUserToken(token) {
-      store.setUserToken(token);
-    },
     handleSubmitFinish() {
       this.loading = true;
       authUserLogin({
@@ -77,11 +74,9 @@
                     password: this.formModel.password,
                   }).then(res=>{
 
-        localStorage.setItem('token', res.result.token);
-        this.setUserToken(res.result.token);
+        store.setUserToken(res.result.token);
 
         this.$router.push('/').then(()=>{
-
           this.$message.success("用户登录成功！");
         }).finally(e=>{
           this.loading = false;

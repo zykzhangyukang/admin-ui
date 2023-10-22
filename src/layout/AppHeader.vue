@@ -129,7 +129,6 @@
                         let msg = _this.$message.loading("正在刷新登录...", 0.8);
                        authUserRefreshLogin().then(res=>{
                            msg.then(e=>{
-                               localStorage.setItem('token', res.result);
                                store.setUserToken(res.result);
                                window.location.reload();
                            })

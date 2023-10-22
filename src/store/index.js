@@ -27,6 +27,7 @@ export default {
     }else{
       this.state.user.token = ''
     }
+    localStorage.setItem("token", token)
   },
   setUserInfo(info) {
     if(info){
