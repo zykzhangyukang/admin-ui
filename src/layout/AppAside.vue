@@ -3,7 +3,7 @@
     <div class="logo">
       <a href='/'>
         <img :src="Logo" alt=""/> 
-        <span v-if='!menuToggle' class='ml15'>微服务系统</span>
+        <span v-if='!menuToggle' class='ml15'>后台管理系统</span>
       </a>
     </div>
     <slider-menu :menuToggle='menuToggle' :theme='theme' :menu="menu"></slider-menu>

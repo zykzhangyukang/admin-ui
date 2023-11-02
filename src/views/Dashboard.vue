@@ -3,8 +3,8 @@
       <a-card >
           <a-result
                   status="info"
-                   :title="'微服务系统，欢迎您【'+user.info.username+'】!'"
-                  sub-title="微服务系统，专业的微服务架构解决方案！"
+                   :title="'后台管理系统，欢迎您【'+user.info.username+'】!'"
+                  sub-title="后台管理系统，专业的微服务架构解决方案！"
           >
               <template #extra>
                   <a-button key="console" type="primary">马上体验</a-button>
