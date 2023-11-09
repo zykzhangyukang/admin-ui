@@ -10,6 +10,7 @@ export default {
   name: 'App',
   data() {
     return {
+      Zh_CN
     }
   },
   mounted() {
