@@ -12,6 +12,11 @@ const eduChapter = () => import(/* webpackChunkName: 'eduChapter' */'../views/ed
 const eduLesson = () => import(/* webpackChunkName: 'eduLesson' */'../views/edu/lesson/index');
 const eduCatalog = () => import(/* webpackChunkName: 'eduCatalog' */'../views/edu/catalog/index');
 
+const syncPlan = () => import(/* webpackChunkName: 'login' */'../views/sync/plan/index');
+const syncResult = () => import(/* webpackChunkName: 'login' */'../views/sync/result/index');
+const syncMsg = () => import(/* webpackChunkName: 'login' */'../views/sync/msg/index');
+const syncCallback = () => import(/* webpackChunkName: 'login' */'../views/sync/callback/index');
+
 
 const routes = [
 
@@ -29,6 +34,12 @@ const routes = [
     {path: '/edu/chapter', name: 'EduChapter', component: eduChapter},
     {path: '/edu/lesson', name: 'EduLesson', component: eduLesson},
     {path: '/edu/catalog', name: 'EduCatalog', component: eduCatalog},
+
+    // 同步系统
+    {path: '/sync/plan', name: 'SyncPlan', component: syncPlan},
+    {path: '/sync/result', name: 'SyncResult', component: syncResult},
+    {path: '/sync/msg', name: 'SyncMsg', component: syncMsg},
+    {path: '/sync/callback', name: 'SyncCallback', component: syncCallback},
 ]
 
 export default routes
