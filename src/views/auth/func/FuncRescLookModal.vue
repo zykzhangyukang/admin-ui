@@ -31,7 +31,7 @@
 <script>
 
     import {authFuncSelectById } from "@/api/auth";
-    import constant, {bizeduDomain} from "@/utils/constant";
+    import constant, {adminDomain} from "@/utils/constant";
 
     export default {
         name: "funcBindRescModal.vue",
@@ -73,13 +73,13 @@
         },
         computed: {
             rescDomainG(){
-                return constant.getConst("project_domain",bizeduDomain)
+                return constant.getConst("project_domain",adminDomain)
             },
             rescDomainName(){
                 return constant.formatConst(this.rescDomainG)
             },
             methodTypeG(){
-                return constant.getConst("method_type",bizeduDomain)
+                return constant.getConst("method_type",adminDomain)
             },
             methodTypeGName(){
                 return constant.formatConst(this.methodTypeG)

@@ -62,7 +62,7 @@
     import {authLogPage} from "@/api/auth";
     import HTable from "@/components/table/HTable";
     import HPage from "@/components/pagination/HPage";
-    import constant, {bizeduDomain} from "@/utils/constant";
+    import constant, {adminDomain} from "@/utils/constant";
 
     export default {
         name: "log.vue",
@@ -126,13 +126,13 @@
         },
         computed:{
             logModuleG(){
-                return constant.getConst("log_module_group",bizeduDomain)
+                return constant.getConst("log_module_group",adminDomain)
             },
             logModuleGName(){
                 return constant.formatConst(this.logModuleG)
             },
             logLevelG(){
-                return constant.getConst("log_level_group",bizeduDomain)
+                return constant.getConst("log_level_group",adminDomain)
             },
             logLevelGName(){
                 return constant.formatConst(this.logLevelG)

@@ -81,7 +81,7 @@
 <script>
 
     import {authRescDelete, authRescPage, authRescRefresh} from "@/api/auth";
-    import constant, {bizeduDomain} from "@/utils/constant";
+    import constant, {adminDomain} from "@/utils/constant";
     import rescSaveModal from "@/views/auth/resc/RescSaveModal";
     import rescUpdateModal from "@/views/auth/resc/RescUpdateModal";
     import HPage from "@/components/pagination/HPage";
@@ -167,13 +167,13 @@
         },
         computed:{
             rescDomainG(){
-                return constant.getConst("project_domain",bizeduDomain)
+                return constant.getConst("project_domain",adminDomain)
             },
             rescDomainName(){
                 return constant.formatConst(this.rescDomainG)
             },
             methodTypeG(){
-                return constant.getConst("method_type",bizeduDomain)
+                return constant.getConst("method_type",adminDomain)
             },
             methodTypeGName(){
                 return constant.formatConst(this.methodTypeG)

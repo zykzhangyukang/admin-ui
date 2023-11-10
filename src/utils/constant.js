@@ -1,6 +1,6 @@
 import store from '../store/index'
 
-export const bizeduDomain = "bizedu";
+export const adminDomain = "admin";
 
 export function getConst(group,domain) {
 

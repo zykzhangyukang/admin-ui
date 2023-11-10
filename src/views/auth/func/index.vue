@@ -133,7 +133,7 @@ import {
   SettingOutlined,
   ToolOutlined
 } from '@ant-design/icons-vue';
-import constant, {bizeduDomain} from "@/utils/constant";
+import constant, {adminDomain} from "@/utils/constant";
 import funcLeftTree from "@/views/auth/func/FuncLeftTree";
 import funcSaveModal from "@/views/auth/func/FuncSaveModal";
 import funcUpdateModal from "@/views/auth/func/FuncUpdateModal";
@@ -253,13 +253,13 @@ export default {
         },
         computed:{
             funcTypeG(){
-                return constant.getConst("func_type_group",bizeduDomain)
+                return constant.getConst("func_type_group",adminDomain)
             },
             funcTypeGName(){
                 return constant.formatConst(this.funcTypeG)
             },
             funcDirStatusG(){
-                return constant.getConst("func_dir_status_group",bizeduDomain)
+                return constant.getConst("func_dir_status_group",adminDomain)
             },
             funcDirStatusGName(){
                 return constant.formatConst(this.funcDirStatusG)

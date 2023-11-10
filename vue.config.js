@@ -15,7 +15,7 @@ module.exports = {
   },
   configureWebpack: config => {
     if (process.env.ENV === 'production') {
-      config.plugins.push(new EndWebpackPlugin('dist','bizedu-ui'))
+      config.plugins.push(new EndWebpackPlugin('dist','admin-ui'))
       config.externals = {
         vue: 'Vue',
         axios: 'axios',

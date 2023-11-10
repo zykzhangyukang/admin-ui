@@ -92,7 +92,7 @@
     import HTable from "@/components/table/HTable";
     import HPage from "@/components/pagination/HPage";
     import {syncMsgPage} from "@/api/sync";
-    import constant, {bizeduDomain} from "@/utils/constant";
+    import constant, {adminDomain} from "@/utils/constant";
     import MsgCntLookModal from "@/views/sync/result/MsgCntLookModal";
     import moment from "moment";
 
@@ -198,25 +198,25 @@
         },
         computed:{
             srcProjectG(){
-                return constant.getConst("src_project",bizeduDomain)
+                return constant.getConst("src_project",adminDomain)
             },
             srcProjectGName(){
                 return constant.formatConst(this.srcProjectG)
             },
             destProjectG(){
-                return constant.getConst("dest_project",bizeduDomain)
+                return constant.getConst("dest_project",adminDomain)
             },
             destProjectGName(){
                 return constant.formatConst(this.destProjectG)
             },
             sendStatusG(){
-                return constant.getConst("send_status",bizeduDomain)
+                return constant.getConst("send_status",adminDomain)
             },
             sendStatusGName(){
                 return constant.formatConst(this.sendStatusG)
             },
             dealStatusG(){
-                return constant.getConst("deal_status",bizeduDomain)
+                return constant.getConst("deal_status",adminDomain)
             },
             dealStatusGName(){
                 return constant.formatConst(this.dealStatusG)

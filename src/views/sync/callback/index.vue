@@ -90,7 +90,7 @@
     import HTable from "@/components/table/HTable";
     import HPage from "@/components/pagination/HPage";
     import {syncCallbackPage, syncCallbackRepeat} from "@/api/sync";
-    import constant, {bizeduDomain} from "@/utils/constant";
+    import constant, {adminDomain} from "@/utils/constant";
     import moment from "moment";
     import MsgCntLookModal from "@/views/sync/result/MsgCntLookModal";
     import {Modal} from "ant-design-vue";
@@ -121,7 +121,7 @@
                     currentPage: 1,
                     pageSize: 20,
                     srcProject: 'auth',
-                    destProject: 'bizedu',
+                    destProject: 'admin',
                     status: '',
                     planCode: '',
                     msgId: '',
@@ -198,25 +198,25 @@
         },
         computed:{
             srcProjectG(){
-                return constant.getConst("src_project",bizeduDomain)
+                return constant.getConst("src_project",adminDomain)
             },
             srcProjectGName(){
                 return constant.formatConst(this.srcProjectG)
             },
             destProjectG(){
-                return constant.getConst("dest_project",bizeduDomain)
+                return constant.getConst("dest_project",adminDomain)
             },
             destProjectGName(){
                 return constant.formatConst(this.destProjectG)
             },
             callbackStatusG(){
-                return constant.getConst("callback_status",bizeduDomain)
+                return constant.getConst("callback_status",adminDomain)
             },
             callbackStatusGName(){
                 return constant.formatConst(this.callbackStatusG)
             },
             repeatCountG(){
-                return constant.getConst("repeat_times",bizeduDomain)
+                return constant.getConst("repeat_times",adminDomain)
             },
             repeatCountGName(){
                 return constant.formatConst(this.repeatCountG)

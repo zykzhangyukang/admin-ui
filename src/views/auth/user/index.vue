@@ -114,7 +114,7 @@
     import updatePwd from "@/views/auth/user/UpdatePwd";
     import HPage from "@/components/pagination/HPage";
     import HTable from "@/components/table/HTable";
-    import {bizeduDomain, formatConst, getConst} from "@/utils/constant";
+    import {adminDomain, formatConst, getConst} from "@/utils/constant";
     import {ExclamationCircleOutlined} from '@ant-design/icons-vue';
     import {Modal} from 'ant-design-vue';
     import {createVNode} from 'vue';
@@ -196,7 +196,7 @@
         },
         computed:{
             userStatusG(){
-                return getConst("user_status_group", bizeduDomain)
+                return getConst("user_status_group", adminDomain)
             },
             userStatusGName(){
                 return formatConst(this.userStatusG);

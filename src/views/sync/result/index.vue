@@ -121,7 +121,7 @@
     import HTable from "@/components/table/HTable";
     import HPage from "@/components/pagination/HPage";
     import {syncResultPage, syncResultRepeatSync, syncResultSignSuccess} from "@/api/sync";
-    import constant, {bizeduDomain} from "@/utils/constant";
+    import constant, {adminDomain} from "@/utils/constant";
     import MsgCntLookModal from "@/views/sync/result/MsgCntLookModal";
     import SyncCntLookModal from "@/views/sync/result/SyncCntLookModal";
     import ValidDataLookModal from "@/views/sync/result/ValidDataLookModal";
@@ -270,31 +270,31 @@
         },
         computed:{
             srcProjectG(){
-                return constant.getConst("src_project",bizeduDomain)
+                return constant.getConst("src_project",adminDomain)
             },
             srcProjectGName(){
                 return constant.formatConst(this.srcProjectG)
             },
             destProjectG(){
-                return constant.getConst("dest_project",bizeduDomain)
+                return constant.getConst("dest_project",adminDomain)
             },
             destProjectGName(){
                 return constant.formatConst(this.destProjectG)
             },
             msgSrcG(){
-                return constant.getConst("msg_src",bizeduDomain)
+                return constant.getConst("msg_src",adminDomain)
             },
             msgSrcGName(){
                 return constant.formatConst(this.msgSrcG)
             },
             resultStatusG(){
-                return constant.getConst("result_status",bizeduDomain)
+                return constant.getConst("result_status",adminDomain)
             },
             resultStatusGName(){
                 return constant.formatConst(this.resultStatusG)
             },
             repeatCountG(){
-                return constant.getConst("repeat_times",bizeduDomain)
+                return constant.getConst("repeat_times",adminDomain)
             },
             repeatCountGName(){
                 return constant.formatConst(this.repeatCountG)

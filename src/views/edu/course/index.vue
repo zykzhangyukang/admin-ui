@@ -109,7 +109,7 @@
     import HPage from "@/components/pagination/HPage";
     import HTable from "@/components/table/HTable";
     import {eduCatalogTree, eduCoursePage, eduCourseUpdateStatus} from "@/api/edu";
-    import {bizeduDomain, formatConst, getConst} from "@/utils/constant";
+    import {adminDomain, formatConst, getConst} from "@/utils/constant";
 
     export default {
         name: "course.vue",
@@ -189,7 +189,7 @@
         },
         computed: {
             courseStatusG() {
-                return getConst("course_status_group", bizeduDomain)
+                return getConst("course_status_group", adminDomain)
             },
             courseStatusGName() {
                 return formatConst(this.courseStatusG);

@@ -46,7 +46,7 @@
 
 <script>
 
-    import constant, {bizeduDomain} from "@/utils/constant";
+    import constant, {adminDomain} from "@/utils/constant";
     import {authFucSave} from "@/api/auth";
     import iconPicker from "@/components/icon/iconPicker";
 
@@ -89,13 +89,13 @@
         },
         computed:{
             funcTypeG(){
-                return constant.getConst("func_type_group",bizeduDomain)
+                return constant.getConst("func_type_group",adminDomain)
             },
             funcTypeGName(){
                 return constant.formatConst(this.funcTypeG)
             },
             funcDirStatusG(){
-                return constant.getConst("func_dir_status_group",bizeduDomain)
+                return constant.getConst("func_dir_status_group",adminDomain)
             },
             funcDirStatusGName(){
                 return constant.formatConst(this.funcDirStatusG)

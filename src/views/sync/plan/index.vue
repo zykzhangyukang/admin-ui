@@ -98,7 +98,7 @@
     import PlanSaveModal from "@/views/sync/plan/PlanSaveModal";
     import PlanUpdateModal from "@/views/sync/plan/PlanUpdateModal";
     import {syncPlanDelete, syncPlanPage, syncPlanRefresh, syncPlanUpdateStatus} from "@/api/sync";
-    import constant, {bizeduDomain} from "@/utils/constant";
+    import constant, {adminDomain} from "@/utils/constant";
 
     export default {
         name: "plan.vue",
@@ -187,19 +187,19 @@
         },
         computed:{
             srcProjectG(){
-                return constant.getConst("src_project",bizeduDomain)
+                return constant.getConst("src_project",adminDomain)
             },
             srcProjectGName(){
                 return constant.formatConst(this.srcProjectG)
             },
             destProjectG(){
-                return constant.getConst("dest_project",bizeduDomain)
+                return constant.getConst("dest_project",adminDomain)
             },
             destProjectGName(){
                 return constant.formatConst(this.destProjectG)
             },
             planStatusG(){
-                return constant.getConst("plan_status",bizeduDomain)
+                return constant.getConst("plan_status",adminDomain)
             },
             planStatusGName(){
                 return constant.formatConst(this.planStatusG)

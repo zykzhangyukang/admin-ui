@@ -42,7 +42,7 @@
 <script>
 
     import {authFuncSelectById, authFuncUpdate} from "@/api/auth";
-    import constant, {bizeduDomain} from "@/utils/constant";
+    import constant, {adminDomain} from "@/utils/constant";
     import iconPicker from "@/components/icon/iconPicker";
 
     export default {
@@ -77,13 +77,13 @@
         },
         computed:{
             funcTypeG(){
-                return constant.getConst("func_type_group",bizeduDomain)
+                return constant.getConst("func_type_group",adminDomain)
             },
             funcTypeGName(){
                 return constant.formatConst(this.funcTypeG)
             },
             funcDirStatusG(){
-                return constant.getConst("func_dir_status_group",bizeduDomain)
+                return constant.getConst("func_dir_status_group",adminDomain)
             },
             funcDirStatusGName(){
                 return constant.formatConst(this.funcDirStatusG)

@@ -35,7 +35,7 @@
 
 <script>
     import {authDeptList, authUserSave} from "@/api/auth"
-    import {bizeduDomain, formatConst, getConst} from "@/utils/constant";
+    import {adminDomain, formatConst, getConst} from "@/utils/constant";
     export default {
         name: "userSaveModal.vue",
         data() {
@@ -70,7 +70,7 @@
         },
         computed:{
             userStatusG(){
-                return getConst("user_status_group", bizeduDomain)
+                return getConst("user_status_group", adminDomain)
             },
             userStatusGName(){
                 return formatConst(this.userStatusG);
