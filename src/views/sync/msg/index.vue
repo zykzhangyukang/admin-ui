@@ -116,7 +116,7 @@
                 searchParams: {
                     currentPage: 1,
                     pageSize: 20,
-                    srcProject: 'auth',
+                    srcProject: 'admin',
                     destProject: '',
                     dealStatus: '',
                     sendStatus: '',

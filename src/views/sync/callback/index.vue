@@ -120,8 +120,8 @@
                 searchParams: {
                     currentPage: 1,
                     pageSize: 20,
-                    srcProject: 'auth',
-                    destProject: 'admin',
+                    srcProject: 'admin',
+                    destProject: 'club',
                     status: '',
                     planCode: '',
                     msgId: '',
