@@ -209,7 +209,7 @@
             handlePlanRefresh() {
                 this.btnLoading = true;
                 syncPlanRefresh().then(e=>{
-                    this.$message.success("刷新系统资源成功！");
+                    this.$message.success("刷新同步计划成功！");
                 }).finally(()=>{
                     this.btnLoading  = false;
                 })

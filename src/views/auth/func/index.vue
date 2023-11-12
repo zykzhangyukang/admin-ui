@@ -62,7 +62,7 @@
                                 {{ funcTypeGName[text] }}
                             </template>
                             <template #funcKey="{ text }">
-                               [{{text}}]
+                               {{text}}
                             </template>
                             <template #rescVOList="{ record }">
                                    <span>
