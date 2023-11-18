@@ -25,7 +25,7 @@
                     <a-input v-model:value="searchParams.realName" :style="{width:'180px'}" placeholder="操作人姓名输入框"  autocomplete="off" ></a-input>
                 </a-form-item>
                 <a-form-item>
-                    <a-button type="primary" @click="pageSearchChange" v-permission="'auth:log:page'">搜索</a-button>
+                    <a-button type="primary" @click="pageSearchChange" v-permission="'auth:log:page'"><template #icon><SearchOutlined /></template>搜索</a-button>
                 </a-form-item>
                 <a-form-item>
                     <a-button type="default" @click="pageSearchReset">重置</a-button>

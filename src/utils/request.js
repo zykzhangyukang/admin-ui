@@ -77,7 +77,7 @@ http.interceptors.response.use(
 
             }else if (error.response.status === 500){
 
-                message.error('抱歉，服务器内部异常！');
+                message.error('系统繁忙，请稍后再试！');
 
             }  else {
 

@@ -8,39 +8,50 @@
                 </a-col>
                 <a-col :span="20">
                     <a-card>
-                        <div :style="{'textAlign':'right'}">
-                            <a-button type="primary" @click="handleAdd" v-permission="'auth:func:add'">
-                                <PlusOutlined /> 新增功能
-                            </a-button>
-                        </div>
                         <a-form
                                 :style="{'marginBottom':'10px'}"
                                 layout='inline'
                         >
                             <a-form-item label="功能名称">
-                                <a-input v-model:value="searchParams.funcName" :style="{width:'150px'}" placeholder="功能名称输入框"  autocomplete="off" ></a-input>
+                                <a-input v-model:value="searchParams.funcName" :style="{width:'180px'}" placeholder="功能名称输入框"  autocomplete="off" ></a-input>
                             </a-form-item>
                             <a-form-item label="资源URL">
-                                <a-input v-model:value="searchParams.rescUrl" :style="{width:'150px'}" placeholder="资源URL输入框"  autocomplete="off" ></a-input>
+                                <a-input v-model:value="searchParams.rescUrl" :style="{width:'180px'}" placeholder="资源URL输入框"  autocomplete="off" ></a-input>
                             </a-form-item>
                             <a-form-item label="功能Key">
-                                <a-input v-model:value="searchParams.funcKey" :style="{width:'150px'}" placeholder="功能Key输入框"  autocomplete="off" ></a-input>
+                                <a-input v-model:value="searchParams.funcKey" :style="{width:'180px'}" placeholder="功能Key输入框"  autocomplete="off" ></a-input>
                             </a-form-item>
                             <a-form-item label="功能类型">
-                                <a-select v-model:value="searchParams.funcType" :style="{width:'150px'}" placeholder="功能类型">
+                                <a-select v-model:value="searchParams.funcType" :style="{width:'180px'}" placeholder="功能类型">
                                     <a-select-option v-for="item in funcTypeG" :value="item.code" :key="item.code">{{funcTypeGName[item.code]}}</a-select-option>
                                 </a-select>
                             </a-form-item>
                             <a-form-item label="是否隐藏">
-                                <a-select v-model:value="searchParams.funcDirStatus" :style="{width:'150px'}" placeholder="是否隐藏">
+                                <a-select v-model:value="searchParams.funcDirStatus" :style="{width:'180px'}" placeholder="是否隐藏">
                                     <a-select-option v-for="item in funcDirStatusG" :value="item.code" :key="item.code">{{funcDirStatusGName[item.code]}}</a-select-option>
                                 </a-select>
                             </a-form-item>
+                            <a-form-item label="创建时间">
+                                <a-range-picker
+                                        style="width: 200px"
+                                        v-model:value="timeList"
+                                        :ranges="ranges"
+                                        :allowClear="false"
+                                        valueFormat="YYYY-MM-DD HH:mm:ss"
+                                        format="YYYY-MM-DD HH:mm:ss"
+                                        showTime
+                                />
+                            </a-form-item>
                             <a-form-item>
-                                <a-button type="primary" @click="pageSearchChange" v-permission="'auth:func:page'">搜索</a-button>
+                                <a-button type="primary" @click="pageSearchChange" v-permission="'auth:func:page'"><template #icon><SearchOutlined /></template>搜索</a-button>
                             </a-form-item>
                             <a-form-item>
                                 <a-button type="default" @click="pageSearchReset">重置</a-button>
+                            </a-form-item>
+                            <a-form-item>
+                            <a-button   @click="handleAdd" v-permission="'auth:func:add'">
+                                <PlusOutlined /> 新增功能
+                            </a-button>
                             </a-form-item>
                         </a-form>
                         <HTable
@@ -143,6 +154,7 @@ import HPage from "@/components/pagination/HPage";
 import HTable from "@/components/table/HTable";
 import {Modal} from "ant-design-vue";
 import {createVNode} from 'vue';
+import moment from "moment";
 
 export default {
         name: "Func.vue",
@@ -162,6 +174,13 @@ export default {
     },
         data(){
             return {
+                timeList: [],
+                ranges: {
+                    "今天": [moment().startOf("day"), moment().endOf('day')],
+                    "昨天": [moment().subtract(1, 'day').startOf("day"), moment().subtract(1, 'day').endOf('day')],
+                    "近7天": [moment().subtract(7, 'day').startOf("day"), moment().endOf('day')],
+                    "本月": [moment().startOf('month'), moment().endOf('month')]
+                },
                 toolbarFixed: true,
                 searchParams: {
                     currentPage: 1,
@@ -232,10 +251,10 @@ export default {
                         ellipsis: true,
                     },
                     {
-                        title: '更新时间',
-                        dataIndex: 'updateTime',
+                        title: '创建时间',
+                        dataIndex: 'createTime',
                         align: 'center',
-                        key: 'updateTime',
+                        key: 'createTime',
                         width: '150px',
                         ellipsis: true,
                         sorter: true,
@@ -359,6 +378,7 @@ export default {
                     ...sort
                 }
                 this.parentFunc = {};
+                this.timeList = [];
                 this.$refs['funcLeftTree'].resetSelect();
             },
             pageCurrentChange(page, pageSize) {
@@ -373,6 +393,10 @@ export default {
             async queryData() {
                 try {
                     this.tableLoading = true
+                    if(this.timeList && this.timeList.length === 2){
+                        this.searchParams.startTime = this.timeList[0];
+                        this.searchParams.endTime = this.timeList[1];
+                    }
                     const res = await authFuncPage(this.searchParams)
                     const { totalRow, dataList } = res.result
                     this.total = totalRow
