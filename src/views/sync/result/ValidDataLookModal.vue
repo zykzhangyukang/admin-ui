@@ -58,10 +58,10 @@
                 this.visible = false
             },
             open(p) {
-                this.visible = true;
                 this.spinning = true;
                 let param = {msgContent: p.msgContent}
                 syncResultValidData(param).then(res => {
+                    this.visible = true;
                     this.validTables = res.result;
                     let c = 0;
                     this.validTables.forEach((item, index) => {

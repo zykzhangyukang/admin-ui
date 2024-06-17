@@ -174,7 +174,7 @@
                 },
                 total: 0,
                 tableData: [],
-                tableLoading: true,
+                tableLoading: false,
                 tableColumns: [
                     {
                         title: '计划编号',
@@ -427,7 +427,7 @@
             },
         },
         created() {
-            this.pageSearchChange();
+           // this.pageSearchChange();
         }
     }
 </script>
