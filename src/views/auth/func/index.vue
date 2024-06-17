@@ -106,7 +106,7 @@
                                                     <a  class="btn-text-mini" href="javascript:;"  @click="handleDeleteResourceBind(record.funcId)" v-permission="'auth:func:rescRemove'"> <ClearOutlined /> 解绑资源</a>
                                                 </a-menu-item>
                                                 <a-menu-item>
-                                                    <a  class="btn-text-mini" href="javascript:;"   @click="handleDeleteUserBind(record.funcId)" v-permission="'auth:func:userRemove'"><FileExcelOutlined />  清空用户</a>
+                                                    <a  class="btn-text-mini" href="javascript:;"   @click="handleDeleteUserBind(record.funcId)" v-permission="'auth:func:userRemove'"><FileExcelOutlined />  解绑用户</a>
                                                 </a-menu-item>
                                             </a-menu>
                                         </template>

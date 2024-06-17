@@ -6,12 +6,6 @@ const authFunc = () => import(/* webpackChunkName: 'authFunc' */'../views/auth/f
 const authLog = () => import(/* webpackChunkName: 'authLog' */'../views/auth/log/index');
 
 
-const eduCourse = () => import(/* webpackChunkName: 'eduCourse' */'../views/edu/course/index');
-const educCreateCourse = () => import(/* webpackChunkName: 'educCreateCourse' */'../views/edu/course/CourseCreate');
-const eduChapter = () => import(/* webpackChunkName: 'eduChapter' */'../views/edu/chapter/index');
-const eduLesson = () => import(/* webpackChunkName: 'eduLesson' */'../views/edu/lesson/index');
-const eduCatalog = () => import(/* webpackChunkName: 'eduCatalog' */'../views/edu/catalog/index');
-
 const syncPlan = () => import(/* webpackChunkName: 'login' */'../views/sync/plan/index');
 const syncResult = () => import(/* webpackChunkName: 'login' */'../views/sync/result/index');
 const syncMsg = () => import(/* webpackChunkName: 'login' */'../views/sync/msg/index');
@@ -28,12 +22,6 @@ const routes = [
     {path: '/auth/func', name: 'AuthFunc', component: authFunc},
     {path: '/auth/log', name: 'AuthLog', component: authLog},
 
-    // 后台课程系统
-    {path: '/edu/course', name: 'EduCourse', component: eduCourse},
-    {path: '/edu/course/create', name: 'EduCreateCourse', component: educCreateCourse},
-    {path: '/edu/chapter', name: 'EduChapter', component: eduChapter},
-    {path: '/edu/lesson', name: 'EduLesson', component: eduLesson},
-    {path: '/edu/catalog', name: 'EduCatalog', component: eduCatalog},
 
     // 同步系统
     {path: '/sync/plan', name: 'SyncPlan', component: syncPlan},
