@@ -335,6 +335,8 @@
                         _this.loading2 = true;
                         syncResultSignSuccess(p.uuid).then(e=>{
                             _this.$message.success("操作成功,请刷新查看！");
+                          _this.selectedRowKeys = [];
+                          _this.selectedRows = [];
                         }).finally(()=>{
                             _this.loading2 = false;
                         })
@@ -427,7 +429,7 @@
             },
         },
         created() {
-           // this.pageSearchChange();
+           this.pageSearchChange();
         }
     }
 </script>
