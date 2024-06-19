@@ -56,7 +56,7 @@ http.interceptors.response.use(
                 // 清空token
                 localStorage.clear();
                 router.push('/login').then(() => {
-                    message.error('会话已过期，请重新登录！');
+                    message.error('登录会话已过期！');
                 })
 
             } else if (error.response.status === 403) {
