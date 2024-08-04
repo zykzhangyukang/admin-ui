@@ -446,7 +446,7 @@
         font-size: 12px;
     }
     #sync_content,#msg_content{
-        font-size: 12px;
+        font-size: 13px;
         cursor: pointer;
         color: #409eff;
     }

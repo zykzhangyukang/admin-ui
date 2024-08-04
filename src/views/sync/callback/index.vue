@@ -121,7 +121,7 @@
                     currentPage: 1,
                     pageSize: 20,
                     srcProject: 'admin',
-                    destProject: 'club',
+                    destProject: 'sync',
                     status: '',
                     planCode: '',
                     msgId: '',
