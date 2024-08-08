@@ -49,8 +49,8 @@
                                 <a-button type="default" @click="pageSearchReset">重置</a-button>
                             </a-form-item>
                             <a-form-item>
-                            <a-button   @click="handleAdd" v-permission="'auth:func:add'">
-                                <PlusOutlined /> 新增功能
+                            <a-button @click="handleAdd" v-permission="'auth:func:add'">
+                                新增功能
                             </a-button>
                             </a-form-item>
                         </a-form>

@@ -2,7 +2,7 @@
     <a-modal v-model:visible="visible"
              :title="null"
              :width="700"
-             :closable="false"
+             :closable="true"
              :footer="null"
              @cancel="handleClose"
     >

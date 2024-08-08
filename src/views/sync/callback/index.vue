@@ -303,7 +303,7 @@
 
 <style scoped>
     #msg_content{
-        font-family: Corbel,serif;
+        //font-family: Corbel,serif;
         font-size: 13px;
         cursor: pointer;
         color: #409eff;

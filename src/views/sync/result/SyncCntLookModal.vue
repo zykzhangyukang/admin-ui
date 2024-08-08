@@ -3,7 +3,7 @@
              :title="null"
              :width="700"
              :footer="null"
-             :closable="false"
+             :closable="true"
              @cancel="handleClose"
     >
             <pre class="sync_cnt_code">

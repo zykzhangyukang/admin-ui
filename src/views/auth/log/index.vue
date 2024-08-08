@@ -102,6 +102,21 @@
                         slots: { customRender: 'logLevel' },
                     },
                     {
+                      title: 'ip地址',
+                      dataIndex: 'ipAddress',
+                      key: 'ipAddress',
+                    },
+                  {
+                    title: 'ip归属地',
+                    dataIndex: 'location',
+                    key: 'location',
+                  },
+                    {
+                      title: '设备信息',
+                      dataIndex: 'deviceInfo',
+                      key: 'deviceInfo',
+                    },
+                    {
                         title: '日志信息',
                         dataIndex: 'logInfo',
                         key: 'roleDesc',
