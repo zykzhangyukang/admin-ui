@@ -250,7 +250,7 @@
                         let msg = _this.$message.loading("正在切换账号登录...", 0.8);
                         authUserSwitchLogin({ username: username }).then(res=>{
                             msg.then(e=>{
-                                store.setUserToken(res.result.token);
+                                store.commit('user/setUserToken', res.result.token);
                                 window.location.reload();
                             })
                         })

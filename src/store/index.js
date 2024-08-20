@@ -1,52 +1,23 @@
-import {reactive} from 'vue';
-export default {
-  state: reactive({
-    app: {
-      menuToggle: false,
-    },
-    user: {
-      token:'',
-      info: {}
-    },
-    const: [],
-    // 消息通知
-    message:{
-      messageList: [],
-      noRead: 0,
-    }
-  }),
-  setMenuItem(item, key, value) {
-    item[key] = value;
-  },
-  setAppMenuToggle(toggle) {
-    this.state.app.menuToggle = toggle;
-  },
-  setUserToken(token){
-    if(token){
-      this.state.user.token = token;
-    }else{
-      this.state.user.token = ''
-    }
-    localStorage.setItem("token", token)
-  },
-  setUserInfo(info) {
-    if(info){
-      this.state.user.info = info;
-    }else{
-      this.state.user.info = {}
+import { createStore } from 'vuex'
+const modulesFiles = require.context('./module', true, /\.js$/)
+
+const modules = modulesFiles.keys().reduce((modules, modulePath) => {
+  const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1')
+  const value = modulesFiles(modulePath)
+  modules[moduleName] = value.default
+  return modules
+}, {})
+
+export default createStore({
+  modules,
+  state() {
+    return {
     }
   },
-  setConstList(list){
-    const _store = this.state;
-    Object.keys(list).forEach(key => {
-      _store.const[key] = list[key]
-    });
+  getters: {
   },
-  addUserMsg(msg) {
-    this.state.message.messageList.unshift(msg);
-    this.state.message.noRead += 1
-    if (this.state.message.messageList.length > 10) {
-      this.state.message.messageList = this.state.message.messageList.slice(0, 10)
-    }
+  mutations: {
+  },
+  actions: {
   }
-}
+})

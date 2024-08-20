@@ -47,7 +47,7 @@
 @import '../style/views/login.less';
 </style>
 <script>
-  import store from '../store';
+  import store from '@/store';
   import {LockOutlined, UserOutlined} from '@ant-design/icons-vue'
   import { authUserLogin } from '@/api/auth';
 
@@ -74,7 +74,7 @@
                     password: this.formModel.password,
                   }).then(res=>{
 
-        store.setUserToken(res.result.token);
+        store.commit('user/setUserToken',res.result.token);
 
         this.$router.push('/').then(()=>{
           this.$message.success("用户登录成功！");

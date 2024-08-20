@@ -19,7 +19,7 @@ const getMenuList = (menuTree,menuList) => {
     let route = ruleRoutes.find(r => r.path === menuTree[i].funcKey);
     if (route) {
       menuList.push(route);
-      store.setMenuItem(menuTree[i], 'path', route.path);
+      setMenuItem(menuTree[i], 'path', route.path);
     }
     if(menuTree[i].children && menuTree[i].children.length>0){
       getMenuList(menuTree[i].children,menuList);
@@ -27,6 +27,9 @@ const getMenuList = (menuTree,menuList) => {
   }
 };
 
+function  setMenuItem(item, key, value) {
+  item[key] = value;
+}
 
 const whiteList = ['/login'] // no redirect whitelist
 
@@ -46,7 +49,7 @@ router.beforeEach(async(to, from, next) => {
 
         // 保存用户信息
         let res = await authUserInfo();
-        store.setUserInfo(res.result);
+        store.commit('user/setUserInfo', res.result);
 
         // 根据用户权限匹配路由信息
         let routesMap = getRoutes(res.result.menus);
@@ -54,7 +57,7 @@ router.beforeEach(async(to, from, next) => {
 
         // 常量数据获取
         let {result: list} = await authConstAll();
-        store.setConstList(list);
+        store.commit('app/setConstList', list);
 
         next({ ...to, replace: true });
       }
@@ -72,8 +75,8 @@ router.beforeEach(async(to, from, next) => {
 router.afterEach(async(to, from) => {
   NProgress.done() // finish progress bar
   if (to.path === '/login') {
-    store.setUserToken('');
-    store.setUserInfo(null);
+    store.commit('user/setUserToken','');
+    store.commit('user/setUserInfo',null);
   }
 })
 

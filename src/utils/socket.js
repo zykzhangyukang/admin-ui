@@ -1,6 +1,6 @@
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs'
-import store from '@/store/index'
+import store from "@/store";
 
 class MyWebSock {
     url =   process.env.VUE_APP_API + '/sys_websocket'
@@ -58,13 +58,12 @@ class MyWebSock {
 
     // 监听系统消息
     subSysMsg(msg) {
-        const body = JSON.parse(msg.body)
-        store.addUserMsg(JSON.parse(msg.body));
+        store.commit('message/addUserMsg', JSON.parse(msg.body));
     }
 
     // 监听用户消息
     subUserMsg(msg) {
-        store.addUserMsg(JSON.parse(msg.body));
+        store.commit('message/addUserMsg', JSON.parse(msg.body));
     }
 }
 

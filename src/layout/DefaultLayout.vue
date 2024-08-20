@@ -12,7 +12,7 @@
         :avatar='avatar' :loginOut='loginOut'
       ></app-header>
         <a-layout-content class="content">
-                <router-view :key="key"/>
+            <router-view :key="key"/>
         </a-layout-content>
       <app-footer></app-footer>
     </a-layout>
@@ -22,10 +22,11 @@
 @import '../style/layout.less';
 </style>
 <script>
-  import store from '../store';
+  import store from '@/store';
   import AppAside from './AppAside'
   import AppHeader from './AppHeader'
   import AppFooter from './AppFooter'
+  import TagsView from "@/layout/TagsView.vue";
   import avatar from '@/assets/images/user.jpg'
   import {authUserLogout} from '@/api/auth';
   import {Modal} from "ant-design-vue";
@@ -61,7 +62,7 @@ export default {
   components: {
     AppAside,
     AppHeader,
-    AppFooter
+    AppFooter,
   },
   computed: {
     key() {
@@ -88,7 +89,7 @@ export default {
   },
   methods: {
     menuClick() {
-      store.setAppMenuToggle(!this.menuToggle);
+      store.commit('app/setAppMenuToggle', !this.menuToggle);
     },
     async loginOut() {
       let _this = this;

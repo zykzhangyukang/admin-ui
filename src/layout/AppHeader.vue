@@ -44,7 +44,7 @@
                         </a-menu>
                     </template>
                     <div class='ant-dropdown-link'>
-                        <div class="username">{{user.info.realName}}</div>
+                        <div class="username">{{user.realName}}</div>
                         <a-avatar :src='avatar' alt='avatar' :style="{ cursor: 'pointer' }">
                             <template v-slot:icon>
                                 <UserOutlined/>
@@ -73,8 +73,8 @@
     import {createVNode} from 'vue';
     import {Modal} from 'ant-design-vue';
     import {authUserRefreshLogin} from "@/api/auth";
-    import store from "@/store";
     import  notifyNav from "@/components/notify/notifyNav";
+    import store from "@/store";
 
     export default {
         name: 'AppHeader',
@@ -113,7 +113,7 @@
         },
         computed:{
             user() {
-                return store.state.user;
+              return this.$store.state.user.info;
             }
         },
         methods: {
@@ -129,7 +129,7 @@
                         let msg = _this.$message.loading("正在刷新登录...", 0.8);
                        authUserRefreshLogin().then(res=>{
                            msg.then(e=>{
-                               store.setUserToken(res.result);
+                               store.commit('user/setUserToken',res.result);
                                window.location.reload();
                            })
                        })

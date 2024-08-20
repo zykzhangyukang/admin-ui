@@ -33,7 +33,6 @@
 
 <script>
     import MyWebSock from "@/utils/socket";
-    import store from '@/store/index'
     import {authUserPullNotify} from "@/api/auth";
     export default {
         name: "notifyNav.vue",
@@ -44,10 +43,10 @@
         },
         computed: {
             messageList() {
-                return store.state.message.messageList
+              return this.$store.state.message.messageList;
             },
             noReadCount() {
-                return store.state.message.noRead
+              return this.$store.state.message.noRead;
             }
         },
         methods:{
@@ -55,7 +54,7 @@
                 authUserPullNotify().then(res=>{
                     if(res.result){
                         res.result.forEach(e=>{
-                            store.addUserMsg(e)
+                          this.$store.commit('message/addUserMsg',e);
                         })
                     }
                 })

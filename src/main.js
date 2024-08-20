@@ -6,7 +6,7 @@ import './style/App.less'
 import App from './App.vue'
 import router from './routers'
 import permission from "@/utils/permission"
-import store from './store'
+import store from '@/store'
 import * as antIcons from '@ant-design/icons-vue'
 
 
@@ -24,4 +24,5 @@ app
     .use(router)
     .use(permission)
     .mount('#root')
+app.config.warnHandler = () => null // 去除控制台警告信息
  
