@@ -73,7 +73,7 @@
     import {createVNode} from 'vue';
     import {Modal} from 'ant-design-vue';
     import {authUserRefreshLogin} from "@/api/auth";
-    import  notifyNav from "@/components/notify/notifyNav";
+    import  notifyNav from "@/components/notify/NotifyNav";
     import store from "@/store";
 
     export default {

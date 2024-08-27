@@ -48,7 +48,7 @@
 
     import constant, {adminDomain} from "@/utils/constant";
     import {authFucSave} from "@/api/auth";
-    import iconPicker from "@/components/icon/iconPicker";
+    import iconPicker from "@/components/icon/IconPicker";
 
     export default {
         name: "funcSaveModel.vue",

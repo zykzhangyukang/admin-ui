@@ -43,7 +43,7 @@
 
     import {authFuncSelectById, authFuncUpdate} from "@/api/auth";
     import constant, {adminDomain} from "@/utils/constant";
-    import iconPicker from "@/components/icon/iconPicker";
+    import iconPicker from "@/components/icon/IconPicker";
 
     export default {
         name: "funcUpdateModal.vue",
