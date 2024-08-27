@@ -1,5 +1,5 @@
 <template>
-  <a-menu-item @click="toPage(item)">
+  <a-menu-item @click="toPage(item)" :key="item.funcId">
     <component v-if='item.funcIcon' :is="item.funcIcon" ></component><span>{{item.funcName}}</span>
   </a-menu-item>
 </template>

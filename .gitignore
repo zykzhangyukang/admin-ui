@@ -22,4 +22,4 @@ pnpm-debug.log*
 *.sln
 *.sw?
 /admin-ui.iml
-/admin-ui正式站包 2023-09-17 12_59_26.zip
+/package-lock.json

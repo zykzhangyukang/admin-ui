@@ -90,31 +90,31 @@ export default {
     }
   },
   watch:{
-    menuToggle(newVal) {
-      if (newVal) {
-        this.openKeys = [];
-      } else {
-        let d = getPathName(this.$route.path, this.menu);
-        if(d){
-          this.openKeys = d.opens;
-          this.selectedKeys = [d.select];
-        }
-      }
-    },
-    '$route'(newVal){
-      let d = getPathName(this.$route.path, this.menu);
-      if(d) {
-        this.openKeys = d.opens;
-        this.selectedKeys = [d.select];
-      }
-    },
-    'menu'(newVal){
-      let d = getPathName(this.$route.path, this.menu);
-      if(d){
-        this.openKeys = d.opens;
-        this.selectedKeys = [d.select];
-      }
-    }
+    // menuToggle(newVal) {
+    //   if (newVal) {
+    //     this.openKeys = [];
+    //   } else {
+    //     let d = getPathName(this.$route.path, this.menu);
+    //     if(d){
+    //       this.openKeys = d.opens;
+    //       this.selectedKeys = [d.select];
+    //     }
+    //   }
+    // },
+    // '$route'(newVal){
+    //   let d = getPathName(this.$route.path, this.menu);
+    //   if(d) {
+    //     this.openKeys = d.opens;
+    //     this.selectedKeys = [d.select];
+    //   }
+    // },
+    // 'menu'(newVal){
+    //   let d = getPathName(this.$route.path, this.menu);
+    //   if(d){
+    //     this.openKeys = d.opens;
+    //     this.selectedKeys = [d.select];
+    //   }
+    // }
   },
   methods: {
     onOpenChange(v) {
