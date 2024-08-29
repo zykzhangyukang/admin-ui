@@ -84,40 +84,17 @@ export default {
   },
   mounted() {
     let d = getPathName(this.$route.path, this.menu);
+    console.log(d)
     if(d){
       this.openKeys = d.opens;
       this.selectedKeys = [d.select];
     }
   },
   watch:{
-    // menuToggle(newVal) {
-    //   if (newVal) {
-    //     this.openKeys = [];
-    //   } else {
-    //     let d = getPathName(this.$route.path, this.menu);
-    //     if(d){
-    //       this.openKeys = d.opens;
-    //       this.selectedKeys = [d.select];
-    //     }
-    //   }
-    // },
-    // '$route'(newVal){
-    //   let d = getPathName(this.$route.path, this.menu);
-    //   if(d) {
-    //     this.openKeys = d.opens;
-    //     this.selectedKeys = [d.select];
-    //   }
-    // },
-    // 'menu'(newVal){
-    //   let d = getPathName(this.$route.path, this.menu);
-    //   if(d){
-    //     this.openKeys = d.opens;
-    //     this.selectedKeys = [d.select];
-    //   }
-    // }
   },
   methods: {
     onOpenChange(v) {
+      console.log(v)
       if (v.length === 0 || v.length === 1) {
           this.openKeys = v;
           return void 0;
@@ -131,6 +108,7 @@ export default {
       }
     },
     onSelectChange({ key }){
+      console.log(key)
       clearPageState(key);
       this.selectedKeys = [key];
     }
